@@ -20,7 +20,7 @@ export default function ToggleTheme() {
   return (
     <ActionIcon
       variant="outline"
-      color={computedColorScheme === "dark" ? "yellow" : "blue"}
+      color={"yellow"}
       radius="xl"
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
