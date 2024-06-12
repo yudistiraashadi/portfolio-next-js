@@ -13,15 +13,16 @@ import photoProfile from "@/assets/images/photo_profile.jpg";
 
 export function DefaultAppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const pinned = useHeadroom({ fixedAt: 120 });
+  const pinned = useHeadroom({ fixedAt: 140 });
 
   return (
     <AppShell
-      header={{ height: 60, collapsed: !pinned, offset: false }}
+      header={{ height: 80, collapsed: !pinned, offset: false }}
       padding="md"
+      withBorder={false}
     >
       <AppShell.Header>
-        <div className="flex h-full w-full items-center justify-center">
+        <div className="flex h-full w-full items-center justify-center bg-zinc-50 transition-colors duration-200 ease-in-out dark:bg-black dark:text-white">
           <div className="relative flex w-full max-w-7xl items-center justify-between px-8">
             <Link
               href={"/"}
@@ -46,17 +47,11 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
                 size="xs"
                 radius="xl"
                 variant={pathname === "/" ? "filled" : "subtle"}
+                classNames={{
+                  label: "text-black dark:text-inherit",
+                }}
               >
                 Home
-              </Button>
-              <Button
-                component={Link}
-                href="/about"
-                size="xs"
-                radius="xl"
-                variant={pathname.startsWith("/about") ? "filled" : "subtle"}
-              >
-                About
               </Button>
               <Button
                 component={Link}
@@ -66,6 +61,9 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
                 variant={
                   pathname.startsWith("/portfolio") ? "filled" : "subtle"
                 }
+                classNames={{
+                  label: "text-black dark:text-inherit",
+                }}
               >
                 Portfolio
               </Button>
@@ -75,8 +73,23 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
                 size="xs"
                 radius="xl"
                 variant={pathname.startsWith("/blog") ? "filled" : "subtle"}
+                classNames={{
+                  label: "text-black dark:text-inherit",
+                }}
               >
                 Blogs
+              </Button>
+              <Button
+                component={Link}
+                href="/contacts"
+                size="xs"
+                radius="xl"
+                variant={pathname.startsWith("/contacts") ? "filled" : "subtle"}
+                classNames={{
+                  label: "text-black dark:text-inherit",
+                }}
+              >
+                Contacts
               </Button>
             </section>
 
@@ -85,7 +98,10 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
         </div>
       </AppShell.Header>
 
-      <AppShell.Main pt={`calc(${rem(60)} + var(--mantine-spacing-md))`}>
+      <AppShell.Main
+        className="bg-zinc-50 transition-colors duration-200 ease-in-out dark:bg-black dark:text-white"
+        pt={`calc(${rem(100)} + var(--mantine-spacing-md))`}
+      >
         {children}
       </AppShell.Main>
     </AppShell>
