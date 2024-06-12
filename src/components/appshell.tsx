@@ -23,7 +23,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
     >
       <AppShell.Header>
         <div className="flex h-full w-full items-center justify-center bg-zinc-50 transition-colors duration-200 ease-in-out dark:bg-black dark:text-white">
-          <div className="relative flex w-full max-w-7xl items-center justify-between px-8">
+          <div className="relative flex w-full max-w-7xl items-center justify-between px-2">
             <Link
               href={"/"}
               className="flex items-center justify-center gap-3 rounded-md p-2 transition-all duration-200 ease-in-out hover:bg-yellow-500/10 hover:ring-1 hover:ring-yellow-500"

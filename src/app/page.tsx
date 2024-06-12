@@ -13,18 +13,23 @@ export default function Home() {
         <div>
           <HeroHighlight>
             <Container>
-              <div className="grid h-full min-h-[40rem] gap-4 lg:grid-cols-5">
+              <div className="grid h-full min-h-[40rem] gap-4 py-4 lg:grid-cols-5">
                 <div className="flex flex-col justify-center lg:col-span-3">
-                  <h2 className="mb-2 text-2xl font-bold">Hello &#x1F44B;,</h2>
+                  <h2 className="text-2xl font-bold leading-none">
+                    Hello &#x1F44B;,
+                  </h2>
+                  <h2 className="mb-12 text-2xl font-bold">
+                    My name is Yudistira Ashadi
+                  </h2>
 
-                  <h1 className="mb-8 text-5xl font-bold">
+                  <h1 className="mb-16 text-5xl font-bold">
                     I'm a{" "}
                     <Highlight>
                       <span className="px-4">React Developer</span>
                     </Highlight>
                   </h1>
 
-                  <h2 className="mb-12 text-2xl font-semibold">
+                  <h2 className="mb-4 text-2xl font-semibold">
                     Specializing in Next.JS, React, and React Native
                   </h2>
 
@@ -39,7 +44,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center justify-center lg:col-span-2">
-                  <div className="w-80 overflow-clip rounded-md border-4 border-yellow-500 lg:w-96">
+                  <div className="w-80 overflow-clip rounded-lg border-4 border-yellow-500 lg:w-96">
                     <Image
                       src={photoYudis.src}
                       alt="Yudis' Profile Picture"
