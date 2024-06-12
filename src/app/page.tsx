@@ -1,7 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { Highlight, HeroHighlight } from "@/components/ui/hero-highlight";
-import { Meteors } from "@/components/ui/meteors";
+import {
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconBrandX,
+} from "@tabler/icons-react";
+
+import { Highlight, HeroHighlight } from "@/components/hero-highlight";
+import { Meteors } from "@/components/meteors";
 import { Container } from "@/components/container";
 
 import photoYudis from "@/assets/images/photo_yudis.jpg";
@@ -37,16 +44,39 @@ export default function Home() {
                   </h2>
 
                   <p className="text-sm lg:text-base">
-                    I'm <span className="font-bold">Yudistira Ashadi</span> a
-                    software engineer based in Indonesia. I've been creating
-                    hybrid mobile apps and website using PHP, React Native, and
-                    React since 2017. I have created dozens of mobile apps and
-                    websites for clients like governments and multinational
-                    companies.
+                    I'm a software engineer based in Indonesia. I've been
+                    creating hybrid mobile apps and website using PHP, React
+                    Native, and React since 2017. I have created dozens of
+                    mobile apps and websites for clients like governments and
+                    multinational companies.
                   </p>
+
+                  {/* socials  */}
+                  <div className="mt-12 flex items-center space-x-8">
+                    <Link
+                      href={"https://www.linkedin.com/in/yudistiraashadi/"}
+                      target="_blank"
+                    >
+                      <IconBrandLinkedin size={40} />
+                    </Link>
+
+                    <Link
+                      href={"https://github.com/yudistiraashadi"}
+                      target="_blank"
+                    >
+                      <IconBrandGithub size={35} />
+                    </Link>
+
+                    <Link
+                      href={"https://x.com/yudistiraashadi"}
+                      target="_blank"
+                    >
+                      <IconBrandX size={35} />
+                    </Link>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-center lg:col-span-2">
+                <div className="mt-8 flex items-center justify-center lg:col-span-2 lg:mt-0">
                   <div className="w-80 overflow-clip rounded-lg border-4 border-yellow-500 lg:w-96">
                     <Image
                       src={photoYudis.src}
