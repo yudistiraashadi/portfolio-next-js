@@ -28,19 +28,19 @@ export default function Home() {
                   <h1 className="mb-16 text-3xl font-bold lg:text-5xl">
                     I'm a{" "}
                     <Highlight>
-                      <span className="lg:px-4">React Developer</span>
+                      <span className="lg:px-4">Web Developer</span>
                     </Highlight>
                   </h1>
 
                   <h2 className="mb-4 text-xl font-semibold lg:text-2xl">
-                    Specializing in Next.JS, React, and React Native
+                    Specializing in PHP, Next.JS, React, and React Native
                   </h2>
 
                   <p className="text-sm lg:text-base">
                     I'm <span className="font-bold">Yudistira Ashadi</span> a
                     software engineer based in Indonesia. I've been creating
-                    hybrid mobile apps and website using React Native, React,
-                    and PHP since 2017. I have created dozens of mobile apps and
+                    hybrid mobile apps and website using PHP, React Native, and
+                    React since 2017. I have created dozens of mobile apps and
                     websites for clients like governments and multinational
                     companies.
                   </p>

@@ -21,7 +21,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
       header={{ height: 80, collapsed: !pinned, offset: false }}
       navbar={{
         width: 300,
-        breakpoint: "lg",
+        breakpoint: "sm",
         collapsed: { desktop: true, mobile: !opened },
       }}
       padding="md"
@@ -35,7 +35,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               <Burger
                 opened={opened}
                 onClick={toggle}
-                hiddenFrom="lg"
+                hiddenFrom="sm"
                 size="sm"
               />
 
@@ -57,7 +57,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
             </div>
 
             <Box
-              visibleFrom="lg"
+              visibleFrom="sm"
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform space-x-2"
             >
               <Button

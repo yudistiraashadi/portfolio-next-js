@@ -13,9 +13,12 @@ import { Notifications } from "@mantine/notifications";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-  title: "Yudistira Ashadi - React Developer",
+  title: {
+    template: "%s - Yudistira Ashadi",
+    default: "Yudistira Ashadi - Web Developer",
+  },
   description:
-    "Portfolio and personal website of Yudistira Ashadi, a React developer based in Indonesia.",
+    "Portfolio and personal website of Yudistira Ashadi, a web developer based in Indonesia.",
 };
 
 import { DefaultAppShell } from "@/components/appshell";
