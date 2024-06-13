@@ -1,10 +1,19 @@
 "use client";
 
+import { useMemo } from "react";
 import { AppShell, rem, Button, NavLink, Box, Burger } from "@mantine/core";
 import { useHeadroom, useDisclosure } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconBrandX,
+  IconMail,
+} from "@tabler/icons-react";
+
+import { Container } from "@/components/container";
 
 import dynamic from "next/dynamic";
 const ToggleTheme = dynamic(() => import("./theme"));
@@ -15,6 +24,31 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
   const pathname = usePathname();
   const pinned = useHeadroom({ fixedAt: 140 });
+
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
+
+  const handleContacts = () => {
+    const contacts = document.getElementById("contacts");
+    if (contacts) {
+      contacts.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // make contacts' border blink for 3 times with yellow color
+    const contactsBorder = document.getElementById("contacts")?.style;
+    if (contactsBorder) {
+      let count = 0;
+      const blink = setInterval(() => {
+        contactsBorder.border = `1px solid yellow`;
+        setTimeout(() => {
+          contactsBorder.border = `1px solid transparent`;
+        }, 500);
+        count++;
+        if (count === 3) {
+          clearInterval(blink);
+        }
+      }, 1000);
+    }
+  };
 
   return (
     <AppShell
@@ -100,13 +134,14 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               </Button>
               <Button
                 component={Link}
-                href="/contacts"
+                href="#contacts"
                 size="xs"
                 radius="xl"
-                variant={pathname.startsWith("/contacts") ? "filled" : "subtle"}
+                variant={"subtle"}
                 classNames={{
                   label: "text-black dark:text-inherit",
                 }}
+                onClick={handleContacts}
               >
                 Contacts
               </Button>
@@ -144,10 +179,12 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
 
         <NavLink
           label="Contacts"
-          onClick={toggle}
+          onClick={() => {
+            toggle();
+            handleContacts();
+          }}
           component={Link}
-          href="/contacts"
-          active={pathname.startsWith("/contacts")}
+          href="#contacs"
         />
       </AppShell.Navbar>
 
@@ -157,6 +194,83 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
       >
         {children}
       </AppShell.Main>
+
+      <footer className="w-full bg-zinc-50 dark:bg-black dark:text-white">
+        <Container className="mt-12 space-y-12 p-4">
+          {/* socials + contacts  */}
+          <div
+            id="contacts"
+            className="flex flex-col items-center justify-center space-y-6 rounded-lg lg:flex-row lg:space-x-8 lg:space-y-0"
+          >
+            <Link
+              href={"mailto:distra96@gmail.com"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 duration-200 hover:text-yellow-500"
+            >
+              <IconMail size={40} />
+              <div>distra96@gmail.com</div>
+            </Link>
+
+            <Link
+              href={"https://www.linkedin.com/in/yudistiraashadi/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 duration-200 hover:text-yellow-500"
+            >
+              {/* edit the icon so that it resize bigger and glow when hoverring */}
+              <IconBrandLinkedin size={40} />
+              <div>@yudistiraashadi</div>
+            </Link>
+
+            <Link
+              href={"https://github.com/yudistiraashadi"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 duration-200 hover:text-yellow-500"
+            >
+              <IconBrandGithub size={35} />
+              <div>@yudistiraashadi</div>
+            </Link>
+
+            <Link
+              href={"https://x.com/yudistiraashadi"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 duration-200 hover:text-yellow-500"
+            >
+              <IconBrandX size={35} />
+              <div>@yudistiraashadi</div>
+            </Link>
+          </div>
+
+          {/* most bottom */}
+          <div className="flex flex-col items-center justify-center space-x-2 sm:flex-row">
+            <div>© {currentYear} Yudistira Ashadi</div>
+            <div>•</div>
+            <div>
+              Powered by{" "}
+              <Link
+                href={"https://nextjs.org/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline duration-200 hover:text-yellow-500"
+              >
+                Next.js
+              </Link>{" "}
+              and{" "}
+              <Link
+                href={"https://mantine.dev/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline duration-200 hover:text-yellow-500"
+              >
+                Mantine
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </footer>
     </AppShell>
   );
 }

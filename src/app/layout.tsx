@@ -30,7 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="scroll-smooth selection:bg-yellow-300 selection:text-yellow-900"
+    >
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>
