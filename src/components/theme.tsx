@@ -19,7 +19,6 @@ export default function ToggleTheme() {
 
   return (
     <ActionIcon
-      variant="outline"
       color={"yellow"}
       radius="xl"
       onClick={() => toggleColorScheme()}

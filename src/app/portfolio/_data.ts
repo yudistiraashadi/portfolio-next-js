@@ -20,6 +20,7 @@ import simantuImage from "@/assets/portfolio/simantu.webp";
 import ePelatihanImage from "@/assets/portfolio/e-pelatihan.webp";
 import panglimaEkspresImage from "@/assets/portfolio/panglima-ekspres.webp";
 import meijiTimbanganImage from "@/assets/portfolio/meiji-timbangan.webp";
+import ekinImage from "@/assets/portfolio/ekin.webp";
 import appaDairyImage from "@/assets/portfolio/appa-dairy.webp";
 import appaSportImage from "@/assets/portfolio/appa-sport.webp";
 import lhrImage from "@/assets/portfolio/lhr.webp";
@@ -49,6 +50,15 @@ export const portfolioData: PortfolioType[] = [
     description: "Web app for managing dairy production data of APPA Dairy",
     image: appaDairyImage.src,
     tags: ["Next.js", "Supabase", "Postgres", "Tailwind CSS"],
+  },
+  {
+    urlMissingReason: "Only available for internal use",
+    year: 2023,
+    title: "e-Kinerja PUPR",
+    description:
+      "Website for managing employee performance of Public Works and Housing Ministry of Indonesia",
+    image: ekinImage.src,
+    tags: ["PHP", "MySQL"],
   },
   {
     urlMissingReason: "Only available for internal use",

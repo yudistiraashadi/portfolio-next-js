@@ -14,7 +14,9 @@ export function PortfolioCard({ portfolio }: { portfolio: PortfolioType }) {
   return (
     <Link
       href={portfolio.url ?? "#"}
-      target={portfolio.url ? "_blank" : "_self"}
+      target={portfolio.url ? "_blank" : undefined}
+      rel={portfolio.url ? "noopener noreferrer" : undefined}
+      className={portfolio.url ? undefined : "pointer-events-none"}
     >
       <div
         className={cn(
@@ -46,17 +48,17 @@ export function PortfolioCard({ portfolio }: { portfolio: PortfolioType }) {
         <p className="text-sm">{portfolio.description}</p>
 
         {portfolio.url && (
-          <div className="mt-6 flex items-center gap-2">
-            <IconLink size={20} />
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
+            <IconLink size={20} className="flex-shrink-0" />
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               {portfolio.url}
-            </span>
+            </div>
           </div>
         )}
 
         {!portfolio.url && portfolio.urlMissingReason && (
-          <div className="mt-6 flex items-center gap-2">
-            <IconLinkOff size={20} />
+          <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
+            <IconLinkOff size={20} className="flex-shrink-0" />
             <span className="text-sm text-gray-500 dark:text-gray-400">
               {portfolio.urlMissingReason}
             </span>

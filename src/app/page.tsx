@@ -57,21 +57,31 @@ export default function Home() {
                       href={"https://www.linkedin.com/in/yudistiraashadi/"}
                       target="_blank"
                     >
-                      <IconBrandLinkedin size={40} />
+                      {/* edit the icon so that it resize bigger and glow when hoverring */}
+                      <IconBrandLinkedin
+                        size={40}
+                        className="duration-200 hover:scale-150 hover:text-yellow-500"
+                      />
                     </Link>
 
                     <Link
                       href={"https://github.com/yudistiraashadi"}
                       target="_blank"
                     >
-                      <IconBrandGithub size={35} />
+                      <IconBrandGithub
+                        size={35}
+                        className="duration-200 hover:scale-150 hover:text-yellow-500"
+                      />
                     </Link>
 
                     <Link
                       href={"https://x.com/yudistiraashadi"}
                       target="_blank"
                     >
-                      <IconBrandX size={35} />
+                      <IconBrandX
+                        size={35}
+                        className="duration-200 hover:scale-150 hover:text-yellow-500"
+                      />
                     </Link>
                   </div>
                 </div>
