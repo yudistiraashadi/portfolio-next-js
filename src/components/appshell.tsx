@@ -38,7 +38,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
     if (contactsBorder) {
       let count = 0;
       const blink = setInterval(() => {
-        contactsBorder.border = `1px solid yellow`;
+        contactsBorder.border = `1px solid #ffd43b`;
         setTimeout(() => {
           contactsBorder.border = `1px solid transparent`;
         }, 500);

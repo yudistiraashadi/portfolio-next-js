@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { PortfolioList } from "@/components/portfolio";
 import { Container } from "@/components/container";
 
-import { portfolioData } from "./_data";
+import { portfolioData } from "@/data/portfolio";
 
 export const metadata: Metadata = {
   title: "Portfolio",

@@ -7,10 +7,16 @@ import { Pill } from "@mantine/core";
 import { IconLink, IconLinkOff } from "@tabler/icons-react";
 
 import { SearchBar } from "@/components/search-bar";
-import { PortfolioType } from "@/app/portfolio/_data";
+import { PortfolioType } from "@/data/portfolio";
 import { cn } from "@/utils/cn";
 
-export function PortfolioCard({ portfolio }: { portfolio: PortfolioType }) {
+export function PortfolioCard({
+  portfolio,
+  className,
+}: {
+  portfolio: PortfolioType;
+  className?: string;
+}) {
   return (
     <Link
       href={portfolio.url ?? "#"}
@@ -24,6 +30,7 @@ export function PortfolioCard({ portfolio }: { portfolio: PortfolioType }) {
           portfolio.url
             ? "hover:ring-2 hover:ring-yellow-500"
             : "cursor-default",
+          className,
         )}
       >
         <div className="relative mb-4 aspect-video overflow-clip rounded-lg">
@@ -71,8 +78,10 @@ export function PortfolioCard({ portfolio }: { portfolio: PortfolioType }) {
 
 export function PortfolioList({
   portfolioData,
+  numberOfPortfolio,
 }: {
   portfolioData: PortfolioType[];
+  numberOfPortfolio?: number;
 }) {
   const [search, setSearch] = useState("");
 
@@ -94,7 +103,7 @@ export function PortfolioList({
     return portfolioFiltered.map((portfolio) => (
       <PortfolioCard key={portfolio.title} portfolio={portfolio} />
     ));
-  }, [search]);
+  }, [search, numberOfPortfolio]);
 
   return (
     <>
