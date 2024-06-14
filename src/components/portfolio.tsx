@@ -26,7 +26,7 @@ export function PortfolioCard({
     >
       <div
         className={cn(
-          "h-[32rem] overflow-hidden rounded-lg border border-[#eaeaea] bg-zinc-50 p-4 dark:border-neutral-600 dark:bg-zinc-900",
+          "min-h-[32rem] rounded-lg border border-[#eaeaea] bg-zinc-50 p-4 dark:border-neutral-600 dark:bg-zinc-900",
           portfolio.url
             ? "hover:ring-2 hover:ring-yellow-500"
             : "cursor-default",
@@ -113,7 +113,7 @@ export function PortfolioList({
         onChange={(e) => setSearch(e.currentTarget.value)}
       />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-y-6 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-y-6 lg:grid-cols-3">
         {filteredPortfolioList}
       </div>
     </>

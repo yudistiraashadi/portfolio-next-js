@@ -129,7 +129,8 @@ export default function Home() {
               <p className="text-sm">
                 {monthNames[work.monthStart]} {work.yearStart} -{" "}
                 {work.yearEnd
-                  ? monthNames[work.monthEnd!] + " " + work.yearEnd
+                  ? (work.monthEnd ? monthNames[work.monthEnd] + " " : "") +
+                    work.yearEnd
                   : "Present"}
               </p>
             </div>
@@ -154,18 +155,18 @@ export default function Home() {
 
           <Link
             href="/portfolio"
-            className="text-sm font-semibold text-yellow-500 hover:underline"
+            className="flex-shrink-0 text-sm font-semibold text-yellow-500 hover:underline"
           >
             View all portfolio &rarr;
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {portfolioData.slice(0, 4).map((portfolio) => (
             <PortfolioCard
               key={portfolio.title}
               portfolio={portfolio}
-              className="h-[30rem]"
+              className="min-h-[30rem]"
             />
           ))}
         </div>
