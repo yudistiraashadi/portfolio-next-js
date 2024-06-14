@@ -120,7 +120,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               >
                 Portfolio
               </Button>
-              <Button
+              {/* <Button
                 component={Link}
                 href="/blog"
                 size="xs"
@@ -131,7 +131,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
                 }}
               >
                 Blogs
-              </Button>
+              </Button> */}
               <Button
                 component={Link}
                 href="#contacts"
@@ -169,13 +169,13 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
           active={pathname.startsWith("/portfolio")}
         />
 
-        <NavLink
+        {/* <NavLink
           label="Blogs"
           onClick={toggle}
           component={Link}
           href="/blog"
           active={pathname.startsWith("/blog")}
-        />
+        /> */}
 
         <NavLink
           label="Contacts"
@@ -260,12 +260,12 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               </Link>{" "}
               and{" "}
               <Link
-                href={"https://mantine.dev/"}
+                href={"https://tailwindcss.com/"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline duration-200 hover:text-yellow-500"
               >
-                Mantine
+                Tailwind CSS
               </Link>
             </div>
           </div>
