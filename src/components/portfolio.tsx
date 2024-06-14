@@ -78,10 +78,8 @@ export function PortfolioCard({
 
 export function PortfolioList({
   portfolioData,
-  numberOfPortfolio,
 }: {
   portfolioData: PortfolioType[];
-  numberOfPortfolio?: number;
 }) {
   const [search, setSearch] = useState("");
 
@@ -103,7 +101,7 @@ export function PortfolioList({
     return portfolioFiltered.map((portfolio) => (
       <PortfolioCard key={portfolio.title} portfolio={portfolio} />
     ));
-  }, [search, numberOfPortfolio]);
+  }, [search, portfolioData]);
 
   return (
     <>

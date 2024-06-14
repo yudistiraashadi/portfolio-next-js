@@ -35,7 +35,7 @@ export default function Home() {
               </h2>
 
               <h1 className="mb-16 text-3xl font-bold lg:text-5xl">
-                I'm a{" "}
+                I&apos;m a{" "}
                 <Highlight>
                   <span className="lg:px-4">Web Developer</span>
                 </Highlight>
@@ -46,9 +46,9 @@ export default function Home() {
               </h2>
 
               <p className="text-sm lg:text-base">
-                I'm a software engineer based in Indonesia. I've been creating
-                hybrid mobile apps and website using PHP, React Native, and
-                React since 2017. I have created dozens of mobile apps and
+                I&apos;m a software engineer based in Indonesia. I&apos;ve been
+                creating hybrid mobile apps and website using PHP, React Native,
+                and React since 2017. I have created dozens of mobile apps and
                 websites for clients like governments and multinational
                 companies.
               </p>
