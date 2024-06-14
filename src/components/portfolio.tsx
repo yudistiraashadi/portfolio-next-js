@@ -26,7 +26,7 @@ export function PortfolioCard({
     >
       <div
         className={cn(
-          "min-h-[32rem] rounded-lg border border-[#eaeaea] bg-zinc-50 p-4 dark:border-neutral-600 dark:bg-zinc-900",
+          "min-h-[32rem] rounded-lg border-2 border-[#eaeaea] bg-zinc-50 p-4 dark:border dark:border-neutral-600 dark:bg-zinc-900",
           portfolio.url
             ? "hover:ring-2 hover:ring-yellow-500"
             : "cursor-default",
