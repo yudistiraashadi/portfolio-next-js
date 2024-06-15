@@ -30,7 +30,11 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
   const handleContacts = () => {
     const contacts = document.getElementById("contacts");
     if (contacts) {
-      contacts.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        contacts.scrollIntoView({
+          behavior: "smooth",
+        });
+      }, 100);
     }
 
     // make contacts' border blink for 3 times with yellow color
@@ -134,7 +138,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               </Button> */}
               <Button
                 component={Link}
-                href="#"
+                href="#contacts"
                 size="xs"
                 radius="xl"
                 variant={"subtle"}
