@@ -134,7 +134,7 @@ export function DefaultAppShell({ children }: { children: React.ReactNode }) {
               </Button> */}
               <Button
                 component={Link}
-                href="#contacts"
+                href="#"
                 size="xs"
                 radius="xl"
                 variant={"subtle"}

@@ -37,8 +37,8 @@ export function PortfolioCard({
           <Image
             src={portfolio.image}
             alt={"image of " + portfolio.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="mb-6 flex flex-wrap gap-1">
