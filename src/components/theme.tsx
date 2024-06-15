@@ -13,15 +13,13 @@ export default function ToggleTheme() {
     getInitialValueInEffect: true,
   });
 
-  const toggleColorScheme = () => {
-    setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
-  };
-
   return (
     <ActionIcon
       color={"yellow"}
       radius="xl"
-      onClick={() => toggleColorScheme()}
+      onClick={() =>
+        setColorScheme(computedColorScheme === "light" ? "dark" : "light")
+      }
       title="Toggle color scheme"
       className={"cursor-pointers"}
     >

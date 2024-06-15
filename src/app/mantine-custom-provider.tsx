@@ -39,6 +39,7 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 export default function MantineCustomProvider(props: MantineProviderProps) {
   return (
     <MantineProvider
+      defaultColorScheme="dark"
       theme={{
         primaryColor: "yellow",
         primaryShade: {
