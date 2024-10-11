@@ -159,10 +159,10 @@ export default function Home() {
         </Link>
       </Container>
 
-      {/* Latest portfolio */}
+      {/* Featured portfolio */}
       <Container className="space-y-12 p-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold lg:text-4xl">Latest Portfolio</h2>
+          <h2 className="text-2xl font-bold lg:text-4xl">Featured Portfolio</h2>
 
           <Link
             href="/portfolio"
@@ -173,13 +173,16 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {portfolioData.slice(0, 4).map((portfolio) => (
-            <PortfolioCard
-              key={portfolio.title}
-              portfolio={portfolio}
-              className="min-h-[30rem]"
-            />
-          ))}
+          {portfolioData
+            .filter((portfolio) => portfolio.priority)
+            .slice(0, 4)
+            .map((portfolio) => (
+              <PortfolioCard
+                key={portfolio.title}
+                portfolio={portfolio}
+                className="min-h-[30rem]"
+              />
+            ))}
         </div>
       </Container>
     </div>

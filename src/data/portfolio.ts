@@ -6,6 +6,7 @@ export type PortfolioType = {
   description: string;
   image: string;
   tags: string[];
+  priority?: boolean;
 };
 
 import kelaslyImage from "@/assets/portfolio/kelasly.webp";
@@ -24,8 +25,61 @@ import ekinImage from "@/assets/portfolio/ekin.webp";
 import appaDairyImage from "@/assets/portfolio/appa-dairy.webp";
 import appaSportImage from "@/assets/portfolio/appa-sport.webp";
 import lhrImage from "@/assets/portfolio/lhr.webp";
+import pqsUnilever from "@/assets/portfolio/pqs-unilever.webp";
+import sistemPersonalia from "@/assets/portfolio/sistem-personalia.webp";
+import aaainvestama from "@/assets/portfolio/aaainvestama.webp";
+import klop from "@/assets/portfolio/klop.webp";
+import sunScraping from "@/assets/portfolio/sun-scraping.webp";
 
 export const portfolioData: PortfolioType[] = [
+  {
+    urlMissingReason: "Currently closed research project",
+    year: 2024,
+    title: "News Sentiment Analysis: Scraping and Analyzing News Articles",
+    description:
+      "Research project on  analyzing news articles for sentiment analysis, currently in data collection phase by scraping news articles",
+    image: sunScraping.src,
+    tags: ["Python", "Scraping", "NLP", "Sentiment Analysis"],
+  },
+  {
+    urlMissingReason: "Still in development",
+    year: 2024,
+    title: "Klop: AI Powered Knowledge Management System",
+    description:
+      "Knowledge management system with AI-powered features such as text recognition and LLM assisted search, used by Public Works and Housing Ministry of Indonesia",
+    image: klop.src,
+    tags: ["Next.js", "Supabase", "AI", "LLM"],
+    priority: true,
+  },
+  {
+    urlMissingReason: "Still in development",
+    year: 2024,
+    title: "Landing Page for a Financial Agency",
+    description:
+      "Landing page for a private investment and corporate finance agency in Indonesia",
+    image: aaainvestama.src,
+    tags: ["Next.js", "SQLite"],
+  },
+  {
+    urlMissingReason: "Only available for internal use",
+    year: 2024,
+    title: "AI Powered HR Management System",
+    description:
+      "Human resources management system with AI-powered features such as face recognition, location tracking, and attendance monitoring",
+    image: sistemPersonalia.src,
+    tags: ["Next.js", "Supabase", "Postgres", "Computer Vision", "AI"],
+    priority: true,
+  },
+  {
+    urlMissingReason: "Only available for internal use",
+    year: 2024,
+    title: "Unilever's Product Quality Standard",
+    description:
+      "Web app for managing product quality standard of Unilever Indonesia for quality checking, product approval, and data analytics",
+    image: pqsUnilever.src,
+    tags: ["PHP", "MySQL", "Data Analytics"],
+    priority: true,
+  },
   {
     urlMissingReason: "Only available for internal use",
     year: 2024,
@@ -33,7 +87,8 @@ export const portfolioData: PortfolioType[] = [
     description:
       "Web app for detection of vehicle and traffic counting, used by Dishub of East Java",
     image: lhrImage.src,
-    tags: ["Next.js", "Supabase", "Postgres", "Computer Vision"],
+    tags: ["Next.js", "Supabase", "Postgres", "Computer Vision", "AI"],
+    priority: true,
   },
   {
     url: "https://appa-sport-web.vercel.app/",
