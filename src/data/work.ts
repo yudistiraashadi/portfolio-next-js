@@ -40,6 +40,8 @@ export const workData: WorkType[] = [
   {
     yearStart: 2021,
     monthStart: 1,
+    yearEnd: 2023,
+    monthEnd: 9,
     companyName: "Retas.io",
     companyLogo: retas.src,
     jobTitle: "Lead Developer",

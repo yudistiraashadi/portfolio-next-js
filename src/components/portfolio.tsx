@@ -26,51 +26,55 @@ export function PortfolioCard({
     >
       <div
         className={cn(
-          "min-h-[32rem] rounded-lg border-2 border-[#eaeaea] bg-zinc-50 p-4 dark:border dark:border-neutral-600 dark:bg-zinc-900",
+          "flex min-h-[32rem] flex-col justify-between rounded-lg border-2 border-[#eaeaea] bg-zinc-50 p-4 dark:border dark:border-neutral-600 dark:bg-zinc-900",
           portfolio.url
             ? "hover:ring-2 hover:ring-yellow-500"
             : "cursor-default",
           className,
         )}
       >
-        <div className="relative mb-4 aspect-video overflow-clip rounded-lg">
-          <Image
-            src={portfolio.image}
-            alt={"image of " + portfolio.title}
-            fill
-            className="object-cover"
-          />
+        <div>
+          <div className="relative mb-4 aspect-video overflow-clip rounded-lg">
+            <Image
+              src={portfolio.image}
+              alt={"image of " + portfolio.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="mb-6 flex flex-wrap gap-1">
+            {portfolio.tags.map((tag) => (
+              <Pill key={tag}>{tag}</Pill>
+            ))}
+          </div>
+
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            {portfolio.year}
+          </p>
+          <h3 className="mb-4 text-xl font-semibold">{portfolio.title}</h3>
+
+          <p className="text-sm">{portfolio.description}</p>
         </div>
-        <div className="mb-6 flex flex-wrap gap-1">
-          {portfolio.tags.map((tag) => (
-            <Pill key={tag}>{tag}</Pill>
-          ))}
-        </div>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {portfolio.year}
-        </p>
-        <h3 className="mb-4 text-xl font-semibold">{portfolio.title}</h3>
-
-        <p className="text-sm">{portfolio.description}</p>
-
-        {portfolio.url && (
-          <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
-            <IconLink size={20} className="flex-shrink-0" />
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              {portfolio.url}
+        <div>
+          {portfolio.url && (
+            <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
+              <IconLink size={20} className="flex-shrink-0" />
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                {portfolio.url}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {!portfolio.url && portfolio.urlMissingReason && (
-          <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
-            <IconLinkOff size={20} className="flex-shrink-0" />
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {portfolio.urlMissingReason}
-            </span>
-          </div>
-        )}
+          {!portfolio.url && portfolio.urlMissingReason && (
+            <div className="mt-6 flex flex-nowrap items-center gap-2 break-all">
+              <IconLinkOff size={20} className="flex-shrink-0" />
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                {portfolio.urlMissingReason}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </Link>
   );

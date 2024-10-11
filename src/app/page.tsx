@@ -11,6 +11,7 @@ import { Highlight, HeroHighlight } from "@/components/hero-highlight";
 import { Meteors } from "@/components/meteors";
 import { Container } from "@/components/container";
 import { PortfolioCard } from "@/components/portfolio";
+import { FlipWords } from "@/components/flip-words";
 
 import photoYudis from "@/assets/images/photo_yudis.jpg";
 
@@ -34,21 +35,28 @@ export default function Home() {
                 My name is Yudistira Ashadi
               </h2>
 
-              <h1 className="mb-16 text-3xl font-bold lg:text-5xl">
-                I&apos;m a{" "}
-                <Highlight>
-                  <span className="lg:px-4">Web Developer</span>
-                </Highlight>
-              </h1>
+              <div className="text-xl font-bold lg:text-2xl">I&apos;m a</div>
+              <div className="mb-16 text-3xl font-bold lg:text-5xl">
+                <FlipWords
+                  className="rounded-lg bg-gradient-to-r from-orange-300 to-yellow-300 p-2 lg:px-4 dark:from-orange-500 dark:to-yellow-500"
+                  words={[
+                    "Full Stack Developer",
+                    "React Developer",
+                    "Web Developer",
+                    "Software Engineer",
+                    "React Native Developer",
+                  ]}
+                />
+              </div>
 
               <h2 className="mb-4 text-xl font-semibold lg:text-2xl">
-                Specializing in PHP, Next.JS, React, and React Native
+                Specializing in Next.JS, React, PHP, and React Native
               </h2>
 
               <p className="text-sm lg:text-base">
                 I&apos;m a software engineer based in Indonesia. I&apos;ve been
                 creating hybrid mobile apps and website using PHP, React Native,
-                and React since 2017. I have created dozens of mobile apps and
+                and React since 2014. I have created dozens of mobile apps and
                 websites for clients like governments and multinational
                 companies.
               </p>
@@ -106,7 +114,10 @@ export default function Home() {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           {workData.slice(0, 4).map((work) => (
-            <div key={work.companyName} className="flex flex-col space-y-4">
+            <div
+              key={work.companyName}
+              className="flex flex-col justify-between space-y-4"
+            >
               <div className="flex space-x-4">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-clip rounded-lg bg-white">
                   <Image
