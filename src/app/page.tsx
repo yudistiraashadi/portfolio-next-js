@@ -41,8 +41,8 @@ export default function Home() {
                   className="rounded-lg bg-gradient-to-r from-orange-300 to-yellow-300 p-2 lg:px-4 dark:from-orange-500 dark:to-yellow-500"
                   words={[
                     "Full Stack Developer",
-                    "React Developer",
-                    "Web Developer",
+                    "AI Integration Specialist",
+                    "Web Application Expert",
                     "Software Engineer",
                     "React Native Developer",
                   ]}
@@ -50,15 +50,17 @@ export default function Home() {
               </div>
 
               <h2 className="mb-4 text-xl font-semibold lg:text-2xl">
-                Specializing in Next.JS, React, PHP, and React Native
+                Building Modern Web Applications with AI-Powered Solutions
               </h2>
 
               <p className="text-sm lg:text-base">
-                I&apos;m a software engineer based in Indonesia. I&apos;ve been
-                creating hybrid mobile apps and website using PHP, React Native,
-                and React since 2014. I have created dozens of mobile apps and
-                websites for clients like governments and multinational
-                companies.
+                I&apos;m a full-stack software engineer based in Indonesia with
+                over 10 years of experience. I specialize in building scalable
+                web applications using Next.js, React, and modern software
+                technologies, while integrating AI capabilities to create
+                intelligent, user-centric solutions. My expertise spans from
+                developing enterprise-grade web platforms to creating innovative
+                mobile apps for governments and multinational companies.
               </p>
 
               {/* socials  */}
@@ -107,6 +109,33 @@ export default function Home() {
           </div>
         </Container>
       </HeroHighlight>
+
+      {/* Featured portfolio */}
+      <Container className="space-y-12 p-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold lg:text-4xl">Featured Portfolio</h2>
+
+          <Link
+            href="/portfolio"
+            className="flex-shrink-0 text-sm font-semibold text-yellow-500 hover:underline"
+          >
+            View all portfolio &rarr;
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {portfolioData
+            .filter((portfolio) => portfolio.priority)
+            .slice(0, 8)
+            .map((portfolio) => (
+              <PortfolioCard
+                key={portfolio.title}
+                portfolio={portfolio}
+                className="min-h-[30rem]"
+              />
+            ))}
+        </div>
+      </Container>
 
       {/* work experience */}
       <Container className="space-y-12 overflow-hidden rounded-lg border-2 border-[#eaeaea] bg-zinc-50 p-4 dark:border dark:border-neutral-600 dark:bg-zinc-900">
@@ -157,33 +186,6 @@ export default function Home() {
         >
           Go to LinkedIn &rarr;
         </Link>
-      </Container>
-
-      {/* Featured portfolio */}
-      <Container className="space-y-12 p-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold lg:text-4xl">Featured Portfolio</h2>
-
-          <Link
-            href="/portfolio"
-            className="flex-shrink-0 text-sm font-semibold text-yellow-500 hover:underline"
-          >
-            View all portfolio &rarr;
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {portfolioData
-            .filter((portfolio) => portfolio.priority)
-            .slice(0, 4)
-            .map((portfolio) => (
-              <PortfolioCard
-                key={portfolio.title}
-                portfolio={portfolio}
-                className="min-h-[30rem]"
-              />
-            ))}
-        </div>
       </Container>
     </div>
   );

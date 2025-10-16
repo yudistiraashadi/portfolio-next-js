@@ -192,6 +192,7 @@ export const portfolioData: PortfolioType[] = [
       "Mobile app for getting public transportation, CCTV, and updates regarding Dishub of Kediri City, Indonesia",
     image: trakerKediriImage.src,
     tags: ["React Native", "GIS"],
+    priority: true,
   },
   {
     url: "https://play.google.com/store/apps/details?id=com.exita",
