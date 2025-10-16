@@ -30,19 +30,52 @@ import sistemPersonalia from "@/assets/portfolio/sistem-personalia.webp";
 import aaainvestama from "@/assets/portfolio/aaainvestama.webp";
 import klop from "@/assets/portfolio/klop.webp";
 import sunScraping from "@/assets/portfolio/sun-scraping.webp";
+import sumwizardImage from "@/assets/portfolio/sumwizard.webp";
+import appaAcademyImage from "@/assets/portfolio/appa-academy.webp";
+import rekapKaryasiswaImage from "@/assets/portfolio/rekap-karyasiswa.webp";
 
 export const portfolioData: PortfolioType[] = [
   {
-    urlMissingReason: "Currently closed research project",
+    urlMissingReason: "Only available for internal use",
+    year: 2025,
+    title: "Karyasiswa PUPR Monitoring Dashboard",
+    description:
+      "Dashboard for monitoring and reporting scholarship students (Karyasiswa) at Ministry of Public Works and Housing (PUPR), enabling regular study progress tracking and evaluation",
+    image: rekapKaryasiswaImage.src,
+    tags: ["Dashboard", "Monitoring", "Data Visualization", "Reporting"],
+    priority: true,
+  },
+  {
+    url: "https://appa-academy.com/",
+    year: 2025,
+    title: "APPA Academy: Soccer School Management System",
+    description:
+      "Indonesia's leading management platform for soccer schools, trusted by 500+ academies with features including player assessment, training programs, and real-time monitoring",
+    image: appaAcademyImage.src,
+    tags: ["Next.js", "SaaS", "Cloud", "Dashboard", "Sports Tech"],
+    priority: true,
+  },
+  {
+    url: "https://sumwizard.com/",
+    year: 2025,
+    title: "Sumwizard: AI-Powered Media Analysis Platform",
+    description:
+      "AI-powered platform that transforms YouTube videos and audio files into actionable insights with automated summarization, transcription, and intelligent question answering",
+    image: sumwizardImage.src,
+    tags: ["Next.js", "AI", "NLP", "Media Analysis", "SaaS"],
+    priority: true,
+  },
+  {
+    urlMissingReason: "Closed research project",
     year: 2024,
     title: "News Sentiment Analysis: Scraping and Analyzing News Articles",
     description:
-      "Research project on  analyzing news articles for sentiment analysis, currently in data collection phase by scraping news articles",
+      "Research project on analyzing sentiments of news article and its effect in the bond market's yield, join research by ITS and the Ministry of Finance of Indonesia",
     image: sunScraping.src,
     tags: ["Python", "Scraping", "NLP", "Sentiment Analysis"],
   },
   {
-    urlMissingReason: "Still in development",
+    url: "https://klop.pu.go.id/",
     year: 2024,
     title: "Klop: AI Powered Knowledge Management System",
     description:
@@ -52,7 +85,7 @@ export const portfolioData: PortfolioType[] = [
     priority: true,
   },
   {
-    urlMissingReason: "Still in development",
+    url: "https://www.triple-a.co.id/",
     year: 2024,
     title: "Landing Page for a Financial Agency",
     description:
