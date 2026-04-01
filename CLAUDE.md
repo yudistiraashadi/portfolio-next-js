@@ -2,96 +2,69 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Code Quality Standards
 
-This is a personal portfolio website for Yudistira Ashadi, a full-stack web developer based in Indonesia. The site showcases work experience, portfolio projects, and contact information.
+- Make minimal, surgical changes
+- **Never compromise type safety**: No `any`, no non-null assertion operator (`!`), no type assertions (`as Type`)
+- **Make illegal states unrepresentable**: Model domain with ADTs/discriminated unions; parse inputs at boundaries into typed structures; if state can't exist, code can't mishandle it
+- **Abstractions**: Consciously constrained, pragmatically parameterised, doggedly documented
 
-**Tech Stack:**
-- Next.js 14 (App Router)
-- React 18
-- TypeScript
-- Tailwind CSS
-- Mantine UI v7.10.1
-- pnpm (package manager)
+### **ENTROPY REMINDER**
 
-## Development Commands
+This codebase will outlive you. Every shortcut you take becomes
+someone else's burden. Every hack compounds into technical debt
+that slows the whole team down.
+
+You are not just writing code. You are shaping the future of this
+project. The patterns you establish will be copied. The corners
+you cut will be cut again.
+
+**Fight entropy. Leave the codebase better than you found it.**
+
+## Plans
+
+- At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
+
+## Commands
+
+Use `pnpm` as the package manager.
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run development server (localhost:3000)
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-
-# Run linting
-pnpm lint
+pnpm dev        # Start development server
+pnpm build      # Production build
+pnpm start      # Start production server
+pnpm lint       # Lint with ESLint (next lint)
 ```
+
+No test suite is configured.
 
 ## Architecture
 
-### Project Structure
+**Next.js 14 App Router** with TypeScript, Mantine 7 for UI components, and Tailwind CSS for utility styling. The two work in tandem — Mantine handles component theming/dark mode, Tailwind handles layout and custom utilities.
 
-- **src/app/**: Next.js App Router pages and layouts
-  - `layout.tsx`: Root layout with Mantine provider, notifications, and app shell
-  - `page.tsx`: Home page with hero, work experience, and featured portfolio
-  - `portfolio/page.tsx`: Full portfolio page
-  - `globals.css`: Global styles including Mantine CSS imports
-  - `mantine-custom-provider.tsx`: Custom Mantine theme configuration
+### Key directories
 
-- **src/components/**: Reusable React components
-  - `appshell.tsx`: Main navigation, header, footer with responsive mobile menu
-  - `theme.tsx`: Dark mode toggle component
-  - `hero-highlight.tsx`, `meteors.tsx`, `flip-words.tsx`: Animated UI components
-  - `portfolio.tsx`: Portfolio card component
-  - `container.tsx`: Max-width container wrapper
-  - `search-bar.tsx`: Search component
+- `src/app/` — App Router pages and root layout. `layout.tsx` wraps the app with Mantine provider and AppShell.
+- `src/components/` — Client components (mark `"use client"` when needed for interactivity/animations).
+- `src/data/` — Static TypeScript data files. Portfolio projects live in `portfolio.ts`, work experience in `work.ts`. These are the only place content changes should happen for updating portfolio items.
+- `src/assets/` — Images imported directly into data files (Next.js image optimization via `import`).
+- `src/utils/cn.ts` — `clsx` + `tailwind-merge` helper for conditional className merging.
 
-- **src/data/**: Static data as TypeScript files
-  - `portfolio.ts`: Array of portfolio projects with metadata
-  - `work.ts`: Array of work experience entries
+### Styling system
 
-- **src/assets/**: Images and static assets (portfolio screenshots, work logos, profile photos)
+Dark mode uses Mantine's `data-mantine-color-scheme="dark"` attribute selector (not `class="dark"`). Tailwind's dark mode config in `tailwind.config.ts` is set to this selector. When writing dark mode Tailwind utilities, use `dark:` prefix — it will activate via Mantine's color scheme.
 
-- **src/utils/**: Utility functions
-  - `cn.ts`: Class name utility (likely using clsx/tailwind-merge)
+PostCSS config (`postcss.config.mjs`) wires Mantine's CSS variables into Tailwind via `postcss-preset-mantine` and `postcss-simple-vars`.
 
-### Key Architecture Patterns
+Custom Tailwind utilities (dotted background pattern `bg-dot-thick-*`, meteor animation) are defined in `tailwind.config.ts`.
 
-**Styling System:**
-- Hybrid approach using both Tailwind CSS and Mantine UI components
-- Custom Mantine theme with yellow as primary color, dark mode as default
-- PostCSS configuration includes `postcss-preset-mantine` and `postcss-simple-vars`
-- Dark mode uses Mantine's color scheme selector: `[data-mantine-color-scheme="dark"]`
-- Custom variant color resolver in `mantine-custom-provider.tsx` for yellow filled buttons
+### Data model
 
-**Path Aliases:**
-- `@/*` maps to `./src/*` (configured in tsconfig.json)
+`PortfolioType` in `src/data/portfolio.ts`:
+- `priority: true` marks a project as featured on the homepage
+- `urlMissingReason` explains why a project has no live link
+- `image` is a statically imported asset (required for Next.js image optimization)
 
-**Data Management:**
-- Portfolio data stored in typed arrays in `src/data/portfolio.ts`
-- Work experience in `src/data/work.ts`
-- No external CMS or database - all content is static
+### Theme
 
-**Component Patterns:**
-- Server Components by default (Next.js App Router)
-- Client components marked with `"use client"` directive (appshell, theme toggle, mantine provider)
-- Dynamic imports used for theme toggle to optimize bundle
-
-**Responsive Design:**
-- Mantine's responsive utilities (`visibleFrom`, `hiddenFrom`)
-- Tailwind responsive prefixes (`lg:`, `sm:`)
-- Mobile-first approach with burger menu
-
-## Image Optimization
-
-Images use Next.js `<Image>` component with Sharp for optimization. Portfolio images are .webp format stored in `src/assets/portfolio/` and `src/assets/work/`.
-
-## Deployment
-
-Built for Vercel deployment (as indicated in README). Uses Next.js production optimizations including package import optimization in `next.config.mjs`.
+Primary color is yellow (`#FFEB00`). Custom `variantColorResolver` in `src/app/mantine-custom-provider.tsx` handles the filled button variant for yellow. Default color scheme is dark.
