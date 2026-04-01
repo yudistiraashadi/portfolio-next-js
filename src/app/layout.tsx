@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +23,10 @@ export const metadata: Metadata = {
 
 import { DefaultAppShell } from "@/components/appshell";
 import MantineCustomProvider from "@/app/mantine-custom-provider";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 export default function RootLayout({
   children,
@@ -32,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scroll-smooth selection:bg-yellow-300 selection:text-yellow-900"
+      className={cn("scroll-smooth selection:bg-yellow-300 selection:text-yellow-900", "font-sans", geist.variable)}
     >
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
