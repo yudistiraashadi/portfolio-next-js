@@ -88,3 +88,8 @@ html {
   background-color: oklch(0.93 0.18 95 / 0.4);
   color: oklch(0.13 0 0);
 }
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}

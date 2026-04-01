@@ -1,54 +1,43 @@
 import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Providers } from "@/components/providers";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
-import "@mantine/core/styles.css";
-import "@mantine/dates/styles.css";
-import "@mantine/notifications/styles.css";
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
-import { ColorSchemeScript } from "@mantine/core";
-import { Notifications } from "@mantine/notifications";
-import NextTopLoader from "nextjs-toploader";
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Yudistira Ashadi",
-    default: "Yudistira Ashadi - Web Developer",
+    template: "%s — Yudistira Ashadi",
+    default: "Yudistira Ashadi — CTO & Software Engineer",
   },
   description:
-    "Portfolio and personal website of Yudistira Ashadi, a web developer based in Indonesia.",
+    "Personal website of Yudistira Ashadi — CTO, co-founder, and full-stack software engineer based in Indonesia.",
 };
-
-import { DefaultAppShell } from "@/components/appshell";
-import MantineCustomProvider from "@/app/mantine-custom-provider";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={cn("scroll-smooth selection:bg-yellow-300 selection:text-yellow-900", "font-sans", geist.variable)}
-    >
-      <head>
-        <ColorSchemeScript defaultColorScheme="dark" />
-      </head>
-      <body className={inter.className} suppressHydrationWarning>
-        <NextTopLoader color="#ffd43b" showSpinner={false} />
-
-        <MantineCustomProvider>
-          <Notifications position="top-right" zIndex={1000} autoClose={10000} />
-
-          <DefaultAppShell>{children}</DefaultAppShell>
-        </MantineCustomProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
+        <Providers>
+          <Navbar />
+          <main className="pt-20">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
