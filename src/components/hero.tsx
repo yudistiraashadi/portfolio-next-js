@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Linkedin, Github, Twitter } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { AuroraBackground } from "@/components/aurora-background";
 
 import photoYudis from "@/assets/images/photo_yudis.jpg";
@@ -51,18 +51,17 @@ export function Hero() {
             </p>
 
             <div className="mb-8 flex flex-wrap gap-3">
-              <Button asChild>
-                <Link href="/portfolio">View Projects →</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link
-                  href="https://grahateknologimaju.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Our Agency ↗
-                </Link>
-              </Button>
+              <Link href="/portfolio" className={buttonVariants()}>
+                View Projects →
+              </Link>
+              <Link
+                href="https://grahateknologimaju.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ variant: "outline" })}
+              >
+                Our Agency ↗
+              </Link>
             </div>
 
             <div className="flex items-center gap-5">

@@ -8,6 +8,7 @@ import { Menu } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import {
   Sheet,
   SheetContent,
@@ -83,52 +84,50 @@ export function Navbar() {
         {/* Desktop nav — center */}
         <nav className="hidden items-center gap-1 sm:flex">
           {navLinks.map((link) => (
-            <Button
+            <Link
               key={link.href}
-              variant="ghost"
-              size="sm"
-              asChild
+              href={link.href}
               className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
                 "rounded-full text-sm text-muted-foreground hover:text-foreground",
                 isActive(link.href) &&
                   "border-b-2 border-primary text-foreground rounded-none pb-0",
               )}
             >
-              <Link href={link.href}>{link.label}</Link>
-            </Button>
+              {link.label}
+            </Link>
           ))}
         </nav>
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="hidden text-sm text-muted-foreground hover:text-foreground sm:inline-flex"
+          <Link
+            href="https://grahateknologimaju.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "sm" }),
+              "hidden text-sm text-muted-foreground hover:text-foreground sm:inline-flex",
+            )}
           >
-            <Link
-              href="https://grahateknologimaju.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Our Agency ↗
-            </Link>
-          </Button>
+            Our Agency ↗
+          </Link>
 
           <ThemeToggle />
 
           {/* Mobile burger */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 sm:hidden"
-                aria-label="Open menu"
-              >
-                <Menu className="h-4 w-4" />
-              </Button>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 sm:hidden"
+                  aria-label="Open menu"
+                />
+              }
+            >
+              <Menu className="h-4 w-4" />
             </SheetTrigger>
             <SheetContent side="left" className="w-72">
               <SheetHeader>
@@ -138,30 +137,32 @@ export function Navbar() {
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-1">
                 {navLinks.map((link) => (
-                  <Button
+                  <Link
                     key={link.href}
-                    variant={isActive(link.href) ? "secondary" : "ghost"}
-                    className="justify-start"
-                    asChild
+                    href={link.href}
+                    className={cn(
+                      buttonVariants({
+                        variant: isActive(link.href) ? "secondary" : "ghost",
+                      }),
+                      "justify-start",
+                    )}
                     onClick={() => setMobileOpen(false)}
                   >
-                    <Link href={link.href}>{link.label}</Link>
-                  </Button>
+                    {link.label}
+                  </Link>
                 ))}
-                <Button
-                  variant="ghost"
-                  className="justify-start text-muted-foreground"
-                  asChild
+                <Link
+                  href="https://grahateknologimaju.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "justify-start text-muted-foreground",
+                  )}
                   onClick={() => setMobileOpen(false)}
                 >
-                  <Link
-                    href="https://grahateknologimaju.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Our Agency ↗
-                  </Link>
-                </Button>
+                  Our Agency ↗
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>

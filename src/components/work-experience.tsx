@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { workData, monthNames } from "@/data/work";
 
 function formatDateRange(
@@ -62,15 +62,14 @@ export function WorkExperience() {
           ))}
         </div>
 
-        <Button variant="outline" asChild>
-          <Link
-            href="https://www.linkedin.com/in/yudistiraashadi/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View full history on LinkedIn ↗
-          </Link>
-        </Button>
+        <Link
+          href="https://www.linkedin.com/in/yudistiraashadi/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "outline" })}
+        >
+          View full history on LinkedIn ↗
+        </Link>
       </div>
     </section>
   );

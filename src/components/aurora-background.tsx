@@ -33,7 +33,7 @@ const blobs = [
     },
     duration: 9,
   },
-] as const;
+];
 
 export function AuroraBackground({
   children,

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Link2, LinkOff } from "lucide-react";
+import { Link2, Link2Off } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
@@ -56,7 +56,7 @@ function CardBody({ portfolio }: { portfolio: PortfolioType }) {
         )}
         {!portfolio.url && portfolio.urlMissingReason && (
           <div className="mt-4 flex items-center gap-1.5">
-            <LinkOff className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground" />
+            <Link2Off className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground" />
             <span className="text-xs text-muted-foreground">
               {portfolio.urlMissingReason}
             </span>
