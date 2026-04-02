@@ -30,23 +30,45 @@ export function Footer() {
 
   return (
     <footer className="bg-background">
-      <div
-        id="contacts"
-        className="mx-auto max-w-7xl px-4 py-16"
-      >
-        <div className="mb-10 flex flex-wrap justify-center gap-8">
-          {contacts.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-            >
-              <Icon className="h-5 w-5" />
-              <span className="text-sm">{label}</span>
-            </Link>
-          ))}
+      <div id="contacts" className="mx-auto max-w-7xl px-4 py-16">
+        <div className="mb-10 grid gap-10 sm:grid-cols-2">
+          {/* Left: identity + availability */}
+          <div>
+            <p className="mb-1 text-base font-semibold">Yudistira Ashadi</p>
+            <p className="font-mono mb-3 text-xs tracking-widest text-primary uppercase">
+              CTO · Co-Founder · Software Engineer
+            </p>
+            <p className="max-w-xs text-sm text-muted-foreground">
+              Available for enterprise projects, consulting, and freelance
+              engagements across Indonesia and remotely.
+            </p>
+          </div>
+
+          {/* Right: contact links */}
+          <div>
+            <p className="font-mono mb-4 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+              Get in Touch
+            </p>
+            <ul className="flex flex-col gap-3">
+              {contacts.map(({ href, label, icon: Icon }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={
+                      href.startsWith("mailto")
+                        ? undefined
+                        : "noopener noreferrer"
+                    }
+                    className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span>{label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <Separator className="mb-6" />
