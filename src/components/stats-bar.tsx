@@ -7,14 +7,14 @@ const stats = [
 export function StatsBar() {
   return (
     <div className="border-b border-border bg-background">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-3 divide-x divide-border">
           {stats.map(({ value, label }) => (
-            <div key={label} className="px-6 py-6 text-center lg:px-8">
-              <div className="text-2xl font-extrabold tracking-tight lg:text-3xl">
+            <div key={label} className="px-3 py-5 text-center sm:px-6 sm:py-6 lg:px-8">
+              <div className="text-lg font-extrabold tracking-tight sm:text-2xl lg:text-3xl">
                 {value}
               </div>
-              <div className="font-mono mt-1 text-[10px] tracking-widest text-muted-foreground uppercase">
+              <div className="font-mono mt-1 text-[9px] tracking-widest text-muted-foreground uppercase sm:text-[10px]">
                 {label}
               </div>
             </div>
