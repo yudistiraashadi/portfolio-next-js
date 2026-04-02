@@ -49,7 +49,7 @@ export default async function PortfolioDetailPage({
     <>
       {/* Header — aurora background */}
       <AuroraBackground className="border-b border-border">
-        <div className="container mx-auto max-w-4xl px-4 pt-8 pb-10">
+        <div className="mx-auto max-w-4xl px-4 pt-8 pb-10">
           {/* Back link */}
           <Link
             href="/portfolio"
@@ -106,7 +106,7 @@ export default async function PortfolioDetailPage({
 
           {/* Result highlight */}
           {portfolio.result && (
-            <div className="mb-2 flex items-start gap-2 rounded-md border-l-4 border-primary bg-primary/10 px-4 py-3">
+            <div className="mb-8 flex items-start gap-2 rounded-md border-l-4 border-primary bg-primary/10 px-4 py-3">
               <TrendingUp className="mt-0.5 size-4 shrink-0 text-primary" />
               <p className="text-sm font-medium text-foreground">{portfolio.result}</p>
             </div>
@@ -115,7 +115,7 @@ export default async function PortfolioDetailPage({
       </AuroraBackground>
 
       {/* Body */}
-      <div className="container mx-auto max-w-4xl px-4 pt-10 pb-16">
+      <div className="mx-auto max-w-4xl px-4 pt-10 pb-16">
         {/* MDX Article */}
         {article && (
           <article className="prose prose-lg dark:prose-invert prose-headings:font-semibold prose-a:text-primary max-w-none">
