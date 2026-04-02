@@ -8,7 +8,9 @@ import { type PortfolioType } from "@/data/portfolio";
 
 const sharedClassName = (hasUrl: boolean, className?: string) =>
   cn(
-    "group flex flex-col rounded-lg border border-border bg-card transition-all duration-200",
+    // min-w-0 overrides grid item's default min-width:auto, preventing the card
+    // from forcing its grid track wider than the container (mobile overflow fix).
+    "group flex min-w-0 flex-col rounded-lg border border-border bg-card transition-all duration-200",
     hasUrl && "cursor-pointer hover:border-primary hover:shadow-md",
     !hasUrl && "cursor-default",
     className,
@@ -47,9 +49,9 @@ function CardBody({ portfolio }: { portfolio: PortfolioType }) {
         </p>
 
         {portfolio.url && (
-          <div className="mt-4 flex items-center gap-1.5">
+          <div className="mt-4 flex min-w-0 items-center gap-1.5">
             <Link2 className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground" />
-            <span className="truncate text-xs text-muted-foreground">
+            <span className="min-w-0 truncate text-xs text-muted-foreground">
               {portfolio.url}
             </span>
           </div>
