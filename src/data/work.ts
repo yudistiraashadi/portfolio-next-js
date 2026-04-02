@@ -11,7 +11,7 @@ export type WorkType = {
 import freelancer from "@/assets/work/freelancer.webp";
 import mydaxue from "@/assets/work/mydaxue.webp";
 import retas from "@/assets/work/retas.png";
-import logoOtomindo from "@/assets/work/logo_otomindo.webp";
+import gtmLogo from "@/assets/work/gtm-logo.png";
 
 export const monthNames = [
   "January",
@@ -33,9 +33,9 @@ export const workData: WorkType[] = [
   {
     yearStart: 2023,
     monthStart: 9,
-    companyName: "PT. Otomindo Teknologi Kreatif",
-    companyLogo: logoOtomindo.src,
-    jobTitle: "Lead Software Engineer",
+    companyName: "PT. Graha Teknologi Maju",
+    companyLogo: gtmLogo.src,
+    jobTitle: "CTO and Co-Founder",
   },
   {
     yearStart: 2021,
