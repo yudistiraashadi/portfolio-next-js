@@ -3,42 +3,33 @@
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
-// Dark mode: higher opacity so the glow reads against a dark background.
-// Light mode: warmer amber tint at moderate opacity — yellow on white needs
-// more saturation to avoid disappearing.
+// Each blob sweeps side-to-side with repeatType:"mirror" so it glides to its
+// target then reverses smoothly — no snap-back to origin. Offset durations so
+// the three blobs are never in sync, keeping the aurora feeling organic.
 const blobs = [
   {
-    className: "absolute -top-20 -left-20 h-96 w-96",
-    darkColor: "rgba(255, 229, 0, 0.28)",
+    // Starts top-left, sweeps far right across the hero then back.
+    className: "absolute -top-20 -left-20 h-[500px] w-[500px]",
+    darkColor: "rgba(255, 229, 0, 0.26)",
     lightColor: "rgba(245, 158, 11, 0.18)",
-    animate: {
-      x: [0, 40, -20, 0],
-      y: [0, -20, 30, 0],
-      scale: [1, 1.1, 0.95, 1],
-    },
-    duration: 10,
+    animate: { x: [0, 480], y: [0, 100], scale: [1, 1.15] },
+    duration: 14,
   },
   {
-    className: "absolute top-10 -right-10 h-80 w-80",
-    darkColor: "rgba(255, 200, 0, 0.22)",
+    // Starts top-right, sweeps far left then back.
+    className: "absolute -top-10 -right-20 h-[420px] w-[420px]",
+    darkColor: "rgba(255, 210, 0, 0.20)",
     lightColor: "rgba(251, 191, 36, 0.16)",
-    animate: {
-      x: [0, -25, 20, 0],
-      y: [0, 20, -10, 0],
-      scale: [1, 1.05, 1.1, 1],
-    },
-    duration: 13,
+    animate: { x: [0, -460], y: [0, 140], scale: [1, 0.88] },
+    duration: 19,
   },
   {
-    className: "absolute -bottom-20 left-1/3 h-80 w-80",
-    darkColor: "rgba(255, 229, 0, 0.20)",
-    lightColor: "rgba(245, 158, 11, 0.14)",
-    animate: {
-      x: [0, 15, -25, 0],
-      y: [0, -25, 15, 0],
-      scale: [1.05, 0.95, 1.05, 1],
-    },
-    duration: 9,
+    // Starts bottom-center, drifts left then right — counters the top blobs.
+    className: "absolute -bottom-24 left-1/4 h-[380px] w-[380px]",
+    darkColor: "rgba(255, 229, 0, 0.18)",
+    lightColor: "rgba(245, 158, 11, 0.13)",
+    animate: { x: [-120, 320], y: [0, -80], scale: [0.95, 1.12] },
+    duration: 16,
   },
 ];
 
@@ -68,6 +59,7 @@ export function AuroraBackground({
           transition={{
             duration: blob.duration,
             repeat: Infinity,
+            repeatType: "mirror",
             ease: "easeInOut",
           }}
         />
