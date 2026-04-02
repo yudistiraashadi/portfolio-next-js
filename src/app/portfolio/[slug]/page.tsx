@@ -104,7 +104,7 @@ export default async function PortfolioDetailPage({
       {portfolio.result && (
         <div className="mb-8 flex items-start gap-2 rounded-md border-l-4 border-primary bg-primary/10 px-4 py-3">
           <TrendingUp className="mt-0.5 size-4 shrink-0 text-primary" />
-          <p className="text-sm font-medium text-primary">{portfolio.result}</p>
+          <p className="text-sm font-medium text-foreground">{portfolio.result}</p>
         </div>
       )}
 
