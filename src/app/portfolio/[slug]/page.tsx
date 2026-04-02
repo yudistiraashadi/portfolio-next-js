@@ -40,7 +40,7 @@ export default async function PortfolioDetailPage({
   const portfolio = portfolioData.find((p) => p.slug === slug);
   if (portfolio === undefined) {
     notFound();
-    return;  // unreachable at runtime but narrows portfolio to PortfolioType
+    return; // unreachable at runtime but narrows portfolio to PortfolioType
   }
 
   const article = getPortfolioArticle(slug);
@@ -48,19 +48,19 @@ export default async function PortfolioDetailPage({
   return (
     <>
       {/* Header — aurora background */}
-      <AuroraBackground className="border-b border-border">
+      <AuroraBackground fadeBottom="h-120">
         <div className="mx-auto max-w-4xl px-4 pt-8 pb-10">
           {/* Back link */}
           <Link
             href="/portfolio"
-            className="mb-8 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
+            className="text-muted-foreground hover:text-primary mb-8 inline-flex items-center gap-1 text-sm transition-colors"
           >
             <ArrowLeft className="size-4" />
             Back to Portfolio
           </Link>
 
           {/* Thumbnail */}
-          <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-lg border border-border">
+          <div className="border-border relative mb-8 aspect-video w-full overflow-hidden rounded-lg border">
             <Image
               src={portfolio.image}
               alt={`Screenshot of ${portfolio.title}`}
@@ -71,18 +71,22 @@ export default async function PortfolioDetailPage({
           </div>
 
           {/* Title */}
-          <h1 className="mb-4 text-3xl font-bold leading-tight text-foreground md:text-4xl">
+          <h1 className="text-foreground mb-4 text-3xl leading-tight font-bold md:text-4xl">
             {portfolio.title}
           </h1>
 
           {/* Tags + Year */}
           <div className="mb-4 flex flex-wrap items-center gap-1.5">
             {portfolio.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="font-mono text-[10px]">
+              <Badge
+                key={tag}
+                variant="outline"
+                className="font-mono text-[10px]"
+              >
                 {tag}
               </Badge>
             ))}
-            <span className="ml-1 text-sm text-muted-foreground">
+            <span className="text-muted-foreground ml-1 text-sm">
               {portfolio.year}
             </span>
           </div>
@@ -93,7 +97,11 @@ export default async function PortfolioDetailPage({
               href={portfolio.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "outline", size: "sm", className: "mb-6" })}
+              className={buttonVariants({
+                variant: "outline",
+                size: "sm",
+                className: "mb-6",
+              })}
             >
               Visit Project
               <ExternalLink className="ml-1 size-3" />
@@ -106,9 +114,11 @@ export default async function PortfolioDetailPage({
 
           {/* Result highlight */}
           {portfolio.result && (
-            <div className="mb-8 flex items-start gap-2 rounded-md border-l-4 border-primary bg-primary/10 px-4 py-3">
-              <TrendingUp className="mt-0.5 size-4 shrink-0 text-primary" />
-              <p className="text-sm font-medium text-foreground">{portfolio.result}</p>
+            <div className="border-primary bg-primary/10 mb-8 flex items-start gap-2 rounded-md border-l-4 px-4 py-3">
+              <TrendingUp className="text-foreground dark:text-primary mt-0.5 size-4 shrink-0" />
+              <p className="text-foreground text-sm font-medium">
+                {portfolio.result}
+              </p>
             </div>
           )}
         </div>
@@ -124,11 +134,11 @@ export default async function PortfolioDetailPage({
         )}
 
         {/* CTA */}
-        <div className="mt-16 rounded-lg bg-primary/10 p-8 text-center">
-          <h3 className="mb-2 text-2xl font-bold text-foreground">
+        <div className="bg-primary/10 mt-16 rounded-lg p-8 text-center">
+          <h3 className="text-foreground mb-2 text-2xl font-bold">
             Have a similar project in mind?
           </h3>
-          <p className="mb-6 text-muted-foreground">
+          <p className="text-muted-foreground mb-6">
             Let&apos;s discuss how we can build the right solution together.
           </p>
           <Link href="/#contacts" className={buttonVariants({ size: "lg" })}>

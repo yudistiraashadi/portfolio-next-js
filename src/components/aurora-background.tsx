@@ -14,30 +14,33 @@ const blobs = [
     className: "absolute -top-20 -left-20 h-[500px] w-[500px]",
     color: "var(--aurora-blob-1)",
     animate: { x: [0, 480], y: [0, 100], scale: [1, 1.15] },
-    duration: 14,
+    duration: 7,
   },
   {
     // Starts top-right, sweeps far left then back.
     className: "absolute -top-10 -right-20 h-[420px] w-[420px]",
     color: "var(--aurora-blob-2)",
     animate: { x: [0, -460], y: [0, 140], scale: [1, 0.88] },
-    duration: 19,
+    duration: 10,
   },
   {
     // Starts bottom-center, drifts left then right — counters the top blobs.
     className: "absolute -bottom-24 left-1/4 h-[380px] w-[380px]",
     color: "var(--aurora-blob-3)",
     animate: { x: [-120, 320], y: [0, -80], scale: [0.95, 1.12] },
-    duration: 16,
+    duration: 8,
   },
 ];
 
 export function AuroraBackground({
   children,
   className,
+  fadeBottom,
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Pass true for the default fade height, or a Tailwind h-* class (e.g. "h-64") for a custom height. */
+  fadeBottom?: boolean | string;
 }) {
   return (
     <div className={`relative overflow-hidden ${className ?? ""}`}>
@@ -66,7 +69,7 @@ export function AuroraBackground({
           Where a blob glows underneath, the line contrast increases
           and the grid visually "lights up". */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage: `
             linear-gradient(to right, var(--aurora-grid) 1px, transparent 1px),
@@ -76,7 +79,18 @@ export function AuroraBackground({
         }}
       />
 
-      <div className="relative">{children}</div>
+      {/* Bottom fade — blends the aurora into the page background below */}
+      {fadeBottom && (
+        <div
+          className={`pointer-events-none absolute right-0 bottom-0 left-0 z-10 ${typeof fadeBottom === "string" ? fadeBottom : "h-32"}`}
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, var(--background))",
+          }}
+        />
+      )}
+
+      <div className="relative z-20">{children}</div>
     </div>
   );
 }

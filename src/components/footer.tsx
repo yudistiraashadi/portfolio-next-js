@@ -35,7 +35,7 @@ export function Footer() {
           {/* Left: identity + availability */}
           <div>
             <p className="mb-1 text-base font-semibold">Yudistira Ashadi</p>
-            <p className="font-mono mb-3 text-xs tracking-widest text-primary uppercase">
+            <p className="font-mono mb-3 text-xs tracking-widest text-foreground dark:text-primary uppercase">
               CTO · Co-Founder · Software Engineer
             </p>
             <p className="max-w-xs text-sm text-muted-foreground">

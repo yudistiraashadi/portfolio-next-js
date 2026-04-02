@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
-      <AuroraBackground className="border-b border-border">
+      <AuroraBackground fadeBottom>
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h1 className="mb-3 text-4xl font-bold tracking-tight lg:text-5xl">
             Portfolio
