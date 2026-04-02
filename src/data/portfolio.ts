@@ -1,4 +1,5 @@
 export type PortfolioType = {
+  slug: string;
   url?: string;
   urlMissingReason?: string;
   year: number;
@@ -7,6 +8,7 @@ export type PortfolioType = {
   image: string;
   tags: string[];
   priority?: boolean;
+  result?: string;
 };
 
 import kelaslyImage from "@/assets/portfolio/kelasly.webp";
@@ -33,9 +35,38 @@ import sunScraping from "@/assets/portfolio/sun-scraping.webp";
 import sumwizardImage from "@/assets/portfolio/sumwizard.webp";
 import appaAcademyImage from "@/assets/portfolio/appa-academy.webp";
 import rekapKaryasiswaImage from "@/assets/portfolio/rekap-karyasiswa.webp";
+import kompetifyImage from "@/assets/portfolio/kompetify.webp";
+import sahabatPuImage from "@/assets/portfolio/sahabat-pu.webp";
+import newEkaryasiswaImage from "@/assets/portfolio/new-ekaryasiswa.webp";
+import dishubNganjukPjuImage from "@/assets/portfolio/dishub-nganjuk-pju.webp";
 
 export const portfolioData: PortfolioType[] = [
   {
+    slug: "sahabat-pu",
+    urlMissingReason: "Only available for internal use",
+    year: 2026,
+    title: "Sahabat PU: AI-Powered Ticketing & Chat Platform",
+    description:
+      "Government ticketing system with AI chatbot integration, enabling citizens to get answers about public services, submit forms, and create support tickets through configurable workflows",
+    image: sahabatPuImage.src,
+    tags: ["Next.js", "AI", "Chatbot", "Ticketing", "Government", "SaaS"],
+    priority: true,
+    result: "AI-assisted citizen service platform for Ministry of Public Works",
+  },
+  {
+    slug: "new-ekaryasiswa",
+    url: "https://bpsdm.pu.go.id/new-e-karyasiswa/",
+    year: 2026,
+    title: "New e-Karyasiswa: Scholarship Management System",
+    description:
+      "Next-generation scholarship management platform for BPSDM PUPR, rebuilding the Karyasiswa monitoring system with modern full-stack architecture and enhanced capabilities",
+    image: newEkaryasiswaImage.src,
+    tags: ["Next.js", "Government", "Dashboard", "Monitoring"],
+    priority: true,
+    result: "Modernized scholarship management for BPSDM PUPR",
+  },
+  {
+    slug: "karyasiswa-pupr",
     urlMissingReason: "Only available for internal use",
     year: 2025,
     title: "Karyasiswa PUPR Monitoring Dashboard",
@@ -44,8 +75,10 @@ export const portfolioData: PortfolioType[] = [
     image: rekapKaryasiswaImage.src,
     tags: ["Dashboard", "Monitoring", "Data Visualization", "Reporting"],
     priority: true,
+    result: "Streamlined scholarship monitoring for PUPR's Karyasiswa program",
   },
   {
+    slug: "appa-academy",
     url: "https://appa-academy.com/",
     year: 2025,
     title: "APPA Academy: Soccer School Management System",
@@ -54,8 +87,23 @@ export const portfolioData: PortfolioType[] = [
     image: appaAcademyImage.src,
     tags: ["Next.js", "SaaS", "Cloud", "Dashboard", "Sports Tech"],
     priority: true,
+    result: "Trusted by 500+ soccer academies across Indonesia",
   },
   {
+    slug: "kompetify",
+    urlMissingReason: "Only available for internal use",
+    year: 2025,
+    title: "Kompetify: Adaptive Managerial Competency Testing",
+    description:
+      "Adaptive examination platform that assesses 9 managerial competencies for government officials, adopted by Kementerian PUPR and BKD Jawa Timur for ASN competency assessment",
+    image: kompetifyImage.src,
+    tags: ["Next.js", "Assessment", "Adaptive Testing", "Dashboard", "Government"],
+    priority: true,
+    result:
+      "Adopted by Kementerian PUPR and BKD Jawa Timur for ASN competency assessment",
+  },
+  {
+    slug: "sumwizard",
     url: "https://sumwizard.com/",
     year: 2025,
     title: "Sumwizard: AI-Powered Media Analysis Platform",
@@ -64,8 +112,22 @@ export const portfolioData: PortfolioType[] = [
     image: sumwizardImage.src,
     tags: ["Next.js", "AI", "NLP", "Media Analysis", "SaaS"],
     priority: true,
+    result: "Automated media analysis with AI-driven summarization and Q&A",
   },
   {
+    slug: "dishub-nganjuk-pju",
+    urlMissingReason: "Only available for internal use",
+    year: 2025,
+    title: "Dishub Nganjuk PJU Management System",
+    description:
+      "GIS-powered public street lighting management system for Nganjuk's Department of Transportation, tracking substations, light poles, cable networks, and PLN electricity billing",
+    image: dishubNganjukPjuImage.src,
+    tags: ["Next.js", "GIS", "PostGIS", "Dashboard", "Government"],
+    result:
+      "Digitized street lighting infrastructure management for Nganjuk regency",
+  },
+  {
+    slug: "news-sentiment-analysis",
     urlMissingReason: "Closed research project",
     year: 2024,
     title: "News Sentiment Analysis: Scraping and Analyzing News Articles",
@@ -75,6 +137,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Python", "Scraping", "NLP", "Sentiment Analysis"],
   },
   {
+    slug: "klop",
     url: "https://klop.pu.go.id/",
     year: 2024,
     title: "Klop: AI Powered Knowledge Management System",
@@ -83,8 +146,10 @@ export const portfolioData: PortfolioType[] = [
     image: klop.src,
     tags: ["Next.js", "Supabase", "AI", "LLM"],
     priority: true,
+    result: "Centralized knowledge access for 30,000+ ministry employees",
   },
   {
+    slug: "financial-agency",
     url: "https://www.triple-a.co.id/",
     year: 2024,
     title: "Landing Page for a Financial Agency",
@@ -94,6 +159,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Next.js", "SQLite"],
   },
   {
+    slug: "hr-management-system",
     urlMissingReason: "Only available for internal use",
     year: 2024,
     title: "AI Powered HR Management System",
@@ -102,8 +168,10 @@ export const portfolioData: PortfolioType[] = [
     image: sistemPersonalia.src,
     tags: ["Next.js", "Supabase", "Postgres", "Computer Vision", "AI"],
     priority: true,
+    result: "AI face recognition attendance with 99%+ accuracy",
   },
   {
+    slug: "unilever-pqs",
     urlMissingReason: "Only available for internal use",
     year: 2024,
     title: "Unilever's Product Quality Standard",
@@ -112,8 +180,10 @@ export const portfolioData: PortfolioType[] = [
     image: pqsUnilever.src,
     tags: ["PHP", "MySQL", "Data Analytics"],
     priority: true,
+    result: "Streamlined quality checks across multiple production lines",
   },
   {
+    slug: "aigle",
     urlMissingReason: "Only available for internal use",
     year: 2024,
     title: "Traffic Detection System AIGLE",
@@ -122,8 +192,10 @@ export const portfolioData: PortfolioType[] = [
     image: lhrImage.src,
     tags: ["Next.js", "Supabase", "Postgres", "Computer Vision", "AI"],
     priority: true,
+    result: "Real-time traffic monitoring across East Java's road network",
   },
   {
+    slug: "appa-sport",
     url: "https://appa-sport-web.vercel.app/",
     year: 2024,
     title: "APPA Sport",
@@ -132,6 +204,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Next.js", "Supabase", "Postgres", "Tailwind CSS"],
   },
   {
+    slug: "appa-dairy",
     urlMissingReason: "Only available for internal use",
     year: 2024,
     title: "APPA Dairy Management System",
@@ -140,6 +213,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Next.js", "Supabase", "Postgres", "Tailwind CSS"],
   },
   {
+    slug: "ekinerja-pupr",
     urlMissingReason: "Only available for internal use",
     year: 2023,
     title: "e-Kinerja PUPR",
@@ -147,8 +221,10 @@ export const portfolioData: PortfolioType[] = [
       "Website for managing employee performance of Public Works and Housing Ministry of Indonesia",
     image: ekinImage.src,
     tags: ["PHP", "MySQL"],
+    result: "Digital performance tracking for thousands of ministry staff",
   },
   {
+    slug: "meiji-weighing",
     urlMissingReason: "Only available for internal use",
     year: 2023,
     title: "Meiji Weighing Monitoring System",
@@ -156,8 +232,10 @@ export const portfolioData: PortfolioType[] = [
       "Web app for monitoring weighing data of PT. Meiji Indonesian Pharmaceutical Industries in Bangil, Indonesia",
     image: meijiTimbanganImage.src,
     tags: ["Next.js", "Supabase", "Tailwind CSS", "Docker"],
+    result: "Automated weighing data collection with real-time dashboards",
   },
   {
+    slug: "panglima-ekspres",
     url: "https://panglimaekspres.com/",
     year: 2023,
     title: "Panglima Ekspres",
@@ -167,6 +245,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Codeigniter", "PHP", "MySQL", "Tailwind CSS"],
   },
   {
+    slug: "bpsdm-epelatihan",
     urlMissingReason: "Only available for internal use",
     year: 2023,
     title: "BPSDM e-Pelatihan",
@@ -176,6 +255,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["PHP", "MySQL", "Bootstrap"],
   },
   {
+    slug: "simantu-pupr",
     url: "https://simantu.pu.go.id/",
     year: 2023,
     title: "SIMANTU - Sistem Manajemen Pengetahuan",
@@ -185,6 +265,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["PHP", "MySQL", "Bootstrap"],
   },
   {
+    slug: "traker-kediri",
     url: "https://play.google.com/store/apps/details?id=com.app.trakerkediri&hl=id",
     year: 2023,
     title: "Traker Kediri",
@@ -195,6 +276,7 @@ export const portfolioData: PortfolioType[] = [
     priority: true,
   },
   {
+    slug: "exita-tulungagung",
     url: "https://play.google.com/store/apps/details?id=com.exita",
     year: 2023,
     title: "Exita - Explorasi Tulungagung",
@@ -204,6 +286,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["React Native", "MobX", "GIS"],
   },
   {
+    slug: "puspas-unair",
     url: "https://puspas.unair.ac.id",
     year: 2022,
     title: "PUSPAS UNAIR",
@@ -213,6 +296,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Codeigniter", "PHP", "Banking", "MySQL"],
   },
   {
+    slug: "pos-parkir",
     urlMissingReason: "Only available in local network",
     year: 2022,
     title: "Pos Parking Tulungagung",
@@ -221,6 +305,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Codeigniter", "PHP", "Python", "REST API"],
   },
   {
+    slug: "lsp-bpsdm-pupr",
     url: "https://bpsdm.pu.go.id/lspbpsdm/",
     year: 2022,
     title: "LSP BPSDM PUPR Website",
@@ -230,6 +315,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Codeigniter", "PHP", "Bootstrap", "MySQL"],
   },
   {
+    slug: "bpsdm-pupr",
     url: "https://bpsdm.pu.go.id/",
     year: 2022,
     title: "BPSDM PUPR Website",
@@ -239,6 +325,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Codeigniter", "PHP", "Bootstrap", "MySQL"],
   },
   {
+    slug: "bon",
     url: "https://play.google.com/store/apps/details?id=com.retas.bon&hl=en&gl=US",
     year: 2022,
     title: "Bon: Aplikasi Keuangan UMKM",
@@ -247,6 +334,7 @@ export const portfolioData: PortfolioType[] = [
     tags: ["Mobile App", "React Native"],
   },
   {
+    slug: "kelasly",
     year: 2021,
     title: "Kelasly",
     description: "Mobile app for education startup: Kelasly.id",
