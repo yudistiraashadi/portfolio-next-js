@@ -43,8 +43,13 @@ export function AuroraBackground({
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
+  // Grid line color: nearly invisible on the base background, but gains
+  // contrast where an aurora blob passes underneath — the "illumination" effect.
+  const gridColor = isDark ? "rgba(255,255,255,0.055)" : "rgba(0,0,0,0.07)";
+
   return (
     <div className={`relative overflow-hidden ${className ?? ""}`}>
+      {/* Aurora blobs — rendered first so the grid overlay sits on top */}
       {blobs.map((blob, i) => (
         <motion.div
           key={i}
@@ -64,6 +69,21 @@ export function AuroraBackground({
           }}
         />
       ))}
+
+      {/* Grid overlay — semi-transparent lines on top of blobs.
+          Where a blob glows underneath, the line contrast increases
+          and the grid visually "lights up". */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, ${gridColor} 1px, transparent 1px),
+            linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)
+          `,
+          backgroundSize: "48px 48px",
+        }}
+      />
+
       <div className="relative">{children}</div>
     </div>
   );
