@@ -48,7 +48,7 @@ export default async function PortfolioDetailPage({
     <main className="container mx-auto max-w-4xl px-4 pt-24 pb-16">
       {/* Back link */}
       <Link
-        href="/#portfolio"
+        href="/portfolio"
         className="mb-8 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
       >
         <ArrowLeft className="size-4" />
