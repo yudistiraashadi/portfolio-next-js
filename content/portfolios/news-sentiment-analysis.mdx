@@ -1,0 +1,27 @@
+News Sentiment Analysis is a collaborative research project conducted jointly by Institut Teknologi Sepuluh Nopember (ITS) and the Ministry of Finance of Indonesia, investigating the relationship between news sentiment and Indonesian government bond market yields.
+
+## Research Objective
+
+The project examines whether sentiment extracted from Indonesian financial and economic news articles has a measurable impact on bond yield movements. By quantifying the "mood" of news coverage, the research aims to provide a data-driven signal that supplements traditional bond market analysis.
+
+## Key Components
+
+### 1. Automated News Scraping
+
+A Python-based scraper collects articles from major Indonesian financial and economic news sources on a scheduled basis. The pipeline handles pagination, deduplication, and raw HTML extraction, storing structured article data including headline, body, publication date, and source.
+
+### 2. Text Preprocessing
+
+Raw article text is cleaned and normalized for NLP processing: removing stopwords, handling Indonesian-language tokenization, and preparing inputs for sentiment classification models.
+
+### 3. Sentiment Classification
+
+Each article is scored using NLP models adapted for the Indonesian language and financial domain. Sentiment scores are aggregated by day and news source to produce composite sentiment indices.
+
+### 4. Bond Yield Correlation Analysis
+
+Sentiment indices are compared against daily Indonesian government bond yield data across multiple maturities. Statistical analysis — including time-lag correlation and regression modelling — tests whether sentiment leads, lags, or moves concurrently with yield changes.
+
+## Purpose and Benefits
+
+The research contributes to the understanding of how public information and media narrative influence sovereign debt markets in an emerging economy context. Findings support more informed bond market analysis by incorporating textual data alongside traditional macroeconomic indicators.
