@@ -29,7 +29,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-border bg-background">
+    <footer className="bg-background">
       <div
         id="contacts"
         className="mx-auto max-w-7xl px-4 py-16"
