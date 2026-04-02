@@ -1,0 +1,32 @@
+
+Dishub Nganjuk PJU Management System is a GIS-powered web application for managing public street lighting (Penerangan Jalan Umum) infrastructure across Nganjuk Regency, East Java. Built for the Department of Transportation (Dinas Perhubungan), the system tracks electrical substations, light poles, cable networks, and monthly PLN electricity billing through interactive maps and data dashboards.
+
+## Key Features
+
+### 1. Substation (Gardu) Management
+
+Registers and manages electrical substations with geolocation data, PLN customer IDs, meter numbers, power type classification (KWH meter vs. subscription-based), MCB capacity, and photo documentation. Each gardu serves as an anchor point in the street lighting network.
+
+### 2. Street Light Pole Tracking
+
+Individual PJU poles are cataloged with lamp type (Mercury, LED, Outdoor, Indoor), wattage, geographic coordinates, and photo records. Each pole is linked to its parent substation, maintaining the physical network hierarchy.
+
+### 3. Cable Network Mapping
+
+The physical cable infrastructure connecting substations to light poles is modeled as geographic linestrings with cable type, diameter, and distance attributes. This network view gives planners visibility into the complete electrical distribution topology.
+
+### 4. Interactive GIS Map
+
+A Leaflet-based map with marker clustering displays all gardu and PJU locations across Nganjuk's sub-districts (kecamatan) and villages (desa/kelurahan). Field surveyors and administrators can visually inspect infrastructure coverage and identify gaps.
+
+### 5. PLN Billing Management
+
+Monthly electricity bills are tracked per customer and substation with CSV import support for bulk data entry. Configurable cost parameters — hours per day, price per kWh — enable accurate cost projection and historical billing analysis.
+
+### 6. Analytics Dashboard
+
+Visual reports present infrastructure statistics, energy consumption trends, and billing summaries. Administrators can export dashboard views for offline reporting and stakeholder presentations.
+
+## Purpose and Benefits
+
+The system replaces paper-based asset tracking with a geospatial platform that gives Nganjuk's transportation department complete visibility into their street lighting infrastructure. By linking physical assets to their geographic locations and electricity costs, the platform supports maintenance planning, budget forecasting, and data-driven decisions about lighting expansion across the regency.
