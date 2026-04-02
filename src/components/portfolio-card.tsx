@@ -6,19 +6,23 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
 import { type PortfolioType } from "@/data/portfolio";
 
-const sharedClassName = (hasUrl: boolean, className?: string) =>
-  cn(
-    // min-w-0 overrides grid item's default min-width:auto, preventing the card
-    // from forcing its grid track wider than the container (mobile overflow fix).
-    "group flex min-w-0 flex-col rounded-lg border border-border bg-card transition-all duration-200",
-    hasUrl && "cursor-pointer hover:border-primary hover:shadow-md",
-    !hasUrl && "cursor-default",
-    className,
-  );
-
-function CardBody({ portfolio }: { portfolio: PortfolioType }) {
+export function PortfolioCard({
+  portfolio,
+  className,
+}: {
+  portfolio: PortfolioType;
+  className?: string;
+}) {
   return (
-    <>
+    <Link
+      href={`/portfolio/${portfolio.slug}`}
+      className={cn(
+        // min-w-0 overrides grid item's default min-width:auto, preventing the card
+        // from forcing its grid track wider than the container (mobile overflow fix).
+        "group flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card transition-all duration-200 hover:border-primary hover:shadow-md",
+        className,
+      )}
+    >
       {/* Image */}
       <div className="relative aspect-video overflow-hidden rounded-t-lg bg-muted">
         <Image
@@ -40,7 +44,7 @@ function CardBody({ portfolio }: { portfolio: PortfolioType }) {
           ))}
         </div>
 
-        <p className="font-mono mb-1 text-[10px] text-muted-foreground">
+        <p className="mb-1 font-mono text-[10px] text-muted-foreground">
           {portfolio.year}
         </p>
         <h3 className="mb-2 font-semibold leading-snug">{portfolio.title}</h3>
@@ -65,33 +69,6 @@ function CardBody({ portfolio }: { portfolio: PortfolioType }) {
           </div>
         )}
       </div>
-    </>
-  );
-}
-
-export function PortfolioCard({
-  portfolio,
-  className,
-}: {
-  portfolio: PortfolioType;
-  className?: string;
-}) {
-  if (portfolio.url) {
-    return (
-      <Link
-        href={portfolio.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={sharedClassName(true, className)}
-      >
-        <CardBody portfolio={portfolio} />
-      </Link>
-    );
-  }
-
-  return (
-    <div className={sharedClassName(false, className)}>
-      <CardBody portfolio={portfolio} />
-    </div>
+    </Link>
   );
 }
