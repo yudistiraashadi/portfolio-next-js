@@ -36,9 +36,11 @@ export default async function PortfolioDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const found = portfolioData.find((p) => p.slug === slug);
-  if (!found) notFound();
-  const portfolio = found;
+  const portfolio = portfolioData.find((p) => p.slug === slug);
+  if (portfolio === undefined) {
+    notFound();
+    return;  // unreachable at runtime but narrows portfolio to PortfolioType
+  }
 
   const article = getPortfolioArticle(slug);
 
