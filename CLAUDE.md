@@ -33,30 +33,33 @@ Use `pnpm` as the package manager.
 pnpm dev        # Start development server
 pnpm build      # Production build
 pnpm start      # Start production server
-pnpm lint       # Lint with ESLint (next lint)
+pnpm lint       # Lint with ESLint
 ```
 
 No test suite is configured.
 
 ## Architecture
 
-**Next.js 14 App Router** with TypeScript, Mantine 7 for UI components, and Tailwind CSS for utility styling. The two work in tandem — Mantine handles component theming/dark mode, Tailwind handles layout and custom utilities.
+**Next.js 16 App Router** with TypeScript, ShadCN UI for components, and Tailwind CSS 4 for styling. Dark/light mode via `next-themes` (`class` strategy — `dark` class on `<html>`). Animations via `framer-motion` 11.
 
 ### Key directories
 
-- `src/app/` — App Router pages and root layout. `layout.tsx` wraps the app with Mantine provider and AppShell.
-- `src/components/` — Client components (mark `"use client"` when needed for interactivity/animations).
-- `src/data/` — Static TypeScript data files. Portfolio projects live in `portfolio.ts`, work experience in `work.ts`. These are the only place content changes should happen for updating portfolio items.
+- `src/app/` — App Router pages and root layout. `layout.tsx` wraps the app in `Providers` (next-themes), `Navbar`, and `Footer`.
+- `src/components/` — Components. Mark `"use client"` only where interactivity or browser APIs are needed. Server components by default.
+- `src/components/ui/` — ShadCN UI primitives (button, badge, input, sheet, separator). Do not edit these directly; re-run `pnpm dlx shadcn@latest add <component>` to update.
+- `src/data/` — Static TypeScript data files. Portfolio projects in `portfolio.ts`, work experience in `work.ts`, skills in `skills.ts`. Content changes happen only here.
 - `src/assets/` — Images imported directly into data files (Next.js image optimization via `import`).
 - `src/utils/cn.ts` — `clsx` + `tailwind-merge` helper for conditional className merging.
 
 ### Styling system
 
-Dark mode uses Mantine's `data-mantine-color-scheme="dark"` attribute selector (not `class="dark"`). Tailwind's dark mode config in `tailwind.config.ts` is set to this selector. When writing dark mode Tailwind utilities, use `dark:` prefix — it will activate via Mantine's color scheme.
+Tailwind CSS 4 uses a **CSS-first config** — there is no `tailwind.config.ts`. All theme tokens live in `src/app/globals.css` under `@theme inline` and `:root` / `.dark` CSS variable blocks.
 
-PostCSS config (`postcss.config.mjs`) wires Mantine's CSS variables into Tailwind via `postcss-preset-mantine` and `postcss-simple-vars`.
+Dark mode uses `next-themes` with `attribute="class"`. When writing dark mode Tailwind utilities, use the `dark:` prefix — it activates via the `.dark` class on `<html>`.
 
-Custom Tailwind utilities (dotted background pattern `bg-dot-thick-*`, meteor animation) are defined in `tailwind.config.ts`.
+The `@custom-variant dark (&:is(.dark *))` line in `globals.css` wires this up for Tailwind v4.
+
+PostCSS config (`postcss.config.mjs`) uses `@tailwindcss/postcss` only — no legacy Mantine plugins.
 
 ### Data model
 
@@ -67,4 +70,8 @@ Custom Tailwind utilities (dotted background pattern `bg-dot-thick-*`, meteor an
 
 ### Theme
 
-Primary color is yellow (`#FFEB00`). Custom `variantColorResolver` in `src/app/mantine-custom-provider.tsx` handles the filled button variant for yellow. Default color scheme is dark.
+Primary color is yellow (`oklch(0.93 0.18 95)` ≈ `#FFE500`). Defined as `--primary` in `globals.css`. Default color scheme is dark. `enableSystem` is disabled in `Providers` — theme is always explicitly dark or light.
+
+### Grid items and flex children
+
+Always add `min-w-0` to grid items and flex children that contain text or images that could overflow. CSS grid/flex default `min-width: auto` causes track blowout — `min-w-0` prevents it.

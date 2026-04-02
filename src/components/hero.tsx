@@ -87,6 +87,7 @@ export function Hero() {
                 src={photoYudis}
                 alt="Yudistira Ashadi"
                 fill
+                sizes="(max-width: 1024px) 256px, 320px"
                 className="object-cover"
                 priority
               />
