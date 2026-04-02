@@ -131,7 +131,7 @@ export default async function PortfolioDetailPage({
           <p className="mb-6 text-muted-foreground">
             Let&apos;s discuss how we can build the right solution together.
           </p>
-          <Link href="/#contact" className={buttonVariants({ size: "lg" })}>
+          <Link href="/#contacts" className={buttonVariants({ size: "lg" })}>
             Get in Touch
             <ArrowRight className="ml-2 size-4" />
           </Link>
