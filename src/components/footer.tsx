@@ -32,7 +32,7 @@ export function Footer() {
           {/* Left: identity + availability */}
           <div>
             <p className="mb-1 text-base font-semibold">Yudistira Ashadi</p>
-            <p className="text-foreground dark:text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+            <p className="text-primary-readable mb-3 font-mono text-xs font-semibold tracking-widest uppercase">
               {profile.extendedHeadline}
             </p>
             <p className="text-muted-foreground max-w-xs text-sm">
@@ -57,9 +57,9 @@ export function Footer() {
                         ? undefined
                         : "noopener noreferrer"
                     }
-                    className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
+                    className="text-muted-foreground hover:text-primary-readable flex items-center gap-2 text-sm transition-colors"
                   >
-                    <Icon className="h-4 w-4 shrink-0" />
+                    <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
                     <span>{label}</span>
                   </Link>
                 </li>
@@ -79,7 +79,7 @@ export function Footer() {
               href="https://nextjs.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary underline underline-offset-2"
+              className="hover:text-primary-readable underline underline-offset-2"
             >
               Next.js
             </Link>{" "}
@@ -88,7 +88,7 @@ export function Footer() {
               href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary underline underline-offset-2"
+              className="hover:text-primary-readable underline underline-offset-2"
             >
               Tailwind CSS
             </Link>

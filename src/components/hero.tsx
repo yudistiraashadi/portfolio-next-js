@@ -57,7 +57,10 @@ export function Hero() {
             </p>
 
             <p className="text-muted-foreground mb-8 flex items-center gap-2 text-sm">
-              <MapPin className="text-primary h-4 w-4" aria-hidden="true" />
+              <MapPin
+                className="text-primary-readable h-4 w-4"
+                aria-hidden="true"
+              />
               {profile.location}
             </p>
 
@@ -91,9 +94,9 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary-readable transition-colors"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5" aria-hidden="true" />
                 </Link>
               ))}
             </div>

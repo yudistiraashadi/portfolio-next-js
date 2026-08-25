@@ -31,7 +31,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4">
             <div className="mb-10 flex items-end justify-between gap-6">
               <div>
-                <p className="text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+                <p className="text-primary-readable mb-3 font-mono text-xs font-semibold tracking-widest uppercase">
                   Selected impact
                 </p>
                 <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">
@@ -40,7 +40,7 @@ export default function Home() {
               </div>
               <Link
                 href="/portfolio"
-                className="text-muted-foreground hover:text-primary shrink-0 text-sm font-medium"
+                className="text-muted-foreground hover:text-primary-readable shrink-0 text-sm font-medium"
               >
                 View all →
               </Link>

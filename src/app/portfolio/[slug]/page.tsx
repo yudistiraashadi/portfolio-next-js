@@ -60,9 +60,9 @@ export default async function PortfolioDetailPage({
           {/* Back link */}
           <Link
             href="/portfolio"
-            className="text-muted-foreground hover:text-primary mb-8 inline-flex items-center gap-1 text-sm transition-colors"
+            className="text-muted-foreground hover:text-primary-readable mb-8 inline-flex items-center gap-1 text-sm transition-colors"
           >
-            <ArrowLeft className="size-4" />
+            <ArrowLeft className="size-4" aria-hidden="true" />
             Back to Portfolio
           </Link>
 
@@ -111,7 +111,7 @@ export default async function PortfolioDetailPage({
               })}
             >
               Visit Project
-              <ExternalLink className="ml-1 size-3" />
+              <ExternalLink className="ml-1 size-3" aria-hidden="true" />
             </a>
           ) : portfolio.urlMissingReason ? (
             <Button disabled variant="outline" size="sm" className="mb-6">
@@ -122,7 +122,10 @@ export default async function PortfolioDetailPage({
           {/* Result highlight */}
           {portfolio.result && (
             <div className="border-primary bg-primary/10 mb-8 flex items-start gap-2 rounded-md border-l-4 px-4 py-3">
-              <TrendingUp className="text-foreground dark:text-primary mt-0.5 size-4 shrink-0" />
+              <TrendingUp
+                className="text-primary-readable mt-0.5 size-4 shrink-0"
+                aria-hidden="true"
+              />
               <p className="text-foreground text-sm font-medium">
                 {portfolio.result}
               </p>
@@ -135,7 +138,7 @@ export default async function PortfolioDetailPage({
       <div className="mx-auto max-w-4xl px-4 pt-10 pb-16">
         {/* MDX Article */}
         {article && (
-          <article className="prose prose-lg dark:prose-invert prose-headings:font-semibold prose-a:text-primary max-w-none">
+          <article className="prose prose-lg dark:prose-invert prose-headings:font-semibold prose-a:text-primary-readable max-w-none">
             <MDXRemote source={article} />
           </article>
         )}
@@ -150,7 +153,7 @@ export default async function PortfolioDetailPage({
           </p>
           <Link href="/#contacts" className={buttonVariants({ size: "lg" })}>
             Get in Touch
-            <ArrowRight className="ml-2 size-4" />
+            <ArrowRight className="ml-2 size-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

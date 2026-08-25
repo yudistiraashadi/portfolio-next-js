@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button-variants";
-import { Badge } from "@/components/ui/badge";
 import { workData, monthNames } from "@/data/work";
 import { profile } from "@/data/profile";
 
@@ -22,7 +21,25 @@ function formatDateRange(
   return `${start} — ${end}`;
 }
 
+function selectFeaturedHighlights(
+  companyName: string,
+  highlights: readonly string[],
+): string[] {
+  if (companyName === "PT. Graha Teknologi Maju") {
+    return highlights
+      .filter(
+        (highlight) => highlight.includes("30K+") || highlight.includes("500+"),
+      )
+      .slice(0, 2);
+  }
+
+  return highlights.slice(0, 2);
+}
+
 export function WorkExperience() {
+  const featuredWork = workData.slice(0, 3);
+  const earlierWork = workData.slice(3);
+
   return (
     <section
       id="experience"
@@ -31,7 +48,7 @@ export function WorkExperience() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-12 grid gap-4 lg:grid-cols-[1fr_1.2fr] lg:items-end">
           <div>
-            <p className="text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+            <p className="text-primary-readable mb-3 font-mono text-xs tracking-widest uppercase">
               Career
             </p>
             <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">
@@ -46,7 +63,7 @@ export function WorkExperience() {
         </div>
 
         <div className="before:bg-border relative mb-10 space-y-6 before:absolute before:top-4 before:bottom-4 before:left-5 before:w-px lg:before:left-[15.75rem]">
-          {workData.map((work) => (
+          {featuredWork.map((work) => (
             <article
               key={`${work.companyName}-${work.jobTitle}`}
               className="relative grid min-w-0 gap-4 pl-14 lg:grid-cols-[14rem_1fr] lg:gap-8 lg:pl-0"
@@ -77,7 +94,7 @@ export function WorkExperience() {
                   />
                 ) : (
                   <BriefcaseBusiness
-                    className="text-primary h-4 w-4"
+                    className="text-primary-readable h-4 w-4"
                     aria-hidden="true"
                   />
                 )}
@@ -88,7 +105,7 @@ export function WorkExperience() {
                   <h3 className="text-xl font-bold tracking-tight">
                     {work.jobTitle}
                   </h3>
-                  <p className="text-primary mt-1 text-sm font-semibold">
+                  <p className="text-primary-readable mt-1 text-sm font-semibold">
                     {work.companyName}
                   </p>
                 </div>
@@ -98,7 +115,10 @@ export function WorkExperience() {
                 </p>
 
                 <ul className="mb-6 space-y-3">
-                  {work.highlights.map((highlight) => (
+                  {selectFeaturedHighlights(
+                    work.companyName,
+                    work.highlights,
+                  ).map((highlight) => (
                     <li
                       key={highlight}
                       className="text-muted-foreground before:bg-primary relative pl-5 text-sm leading-relaxed before:absolute before:top-[0.65rem] before:left-0 before:h-1.5 before:w-1.5 before:rounded-full"
@@ -107,18 +127,41 @@ export function WorkExperience() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </article>
+          ))}
 
-                <div className="flex flex-wrap gap-2">
-                  {work.technologies.map((technology) => (
-                    <Badge
-                      key={technology}
-                      variant="outline"
-                      className="font-mono text-[10px]"
-                    >
-                      {technology}
-                    </Badge>
-                  ))}
-                </div>
+          {earlierWork.map((work) => (
+            <article
+              key={`${work.companyName}-${work.jobTitle}`}
+              className="relative grid min-w-0 gap-3 pl-14 lg:grid-cols-[14rem_1fr] lg:gap-8 lg:pl-0"
+            >
+              <p className="text-foreground font-mono text-xs font-medium lg:text-right">
+                {formatDateRange(
+                  work.monthStart,
+                  work.yearStart,
+                  work.monthEnd,
+                  work.yearEnd,
+                )}
+              </p>
+
+              <div
+                className="border-primary bg-card absolute top-1 left-4 h-3 w-3 rounded-full border-2 lg:left-[15.375rem]"
+                aria-hidden="true"
+              />
+
+              <div className="border-border min-w-0 border-b pb-5 lg:pb-6">
+                <h3 className="font-semibold tracking-tight">
+                  {work.jobTitle}
+                </h3>
+                <p className="mt-1 text-sm">
+                  <span className="text-primary-readable font-semibold">
+                    {work.companyName}
+                  </span>
+                  <span className="text-muted-foreground">
+                    {` · ${work.location}`}
+                  </span>
+                </p>
               </div>
             </article>
           ))}
