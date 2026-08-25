@@ -1,20 +1,21 @@
-const stats = [
-  { value: "10+", label: "yrs_experience" },
-  { value: "24+", label: "projects_shipped" },
-  { value: "Gov & Enterprise", label: "enterprise_clients" },
-] as const;
+import { impactStats } from "@/data/profile";
 
 export function StatsBar() {
   return (
-    <div className="border-b border-border bg-background">
+    <div className="border-border bg-background border-b">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-3 divide-x divide-border">
-          {stats.map(({ value, label }) => (
-            <div key={label} className="px-3 py-5 text-center sm:px-6 sm:py-6 lg:px-8">
+        <div className="sm:divide-border grid grid-cols-2 sm:grid-cols-4 sm:divide-x">
+          {impactStats.map(({ value, label }, index) => (
+            <div
+              key={label}
+              className={`px-3 py-5 text-center sm:px-6 sm:py-6 lg:px-8 ${
+                index < 2 ? "border-border border-b sm:border-b-0" : ""
+              } ${index % 2 === 0 ? "border-border border-r sm:border-r-0" : ""}`}
+            >
               <div className="text-lg font-extrabold tracking-tight sm:text-2xl lg:text-3xl">
                 {value}
               </div>
-              <div className="font-mono mt-1 text-[9px] tracking-widest text-muted-foreground uppercase sm:text-[10px]">
+              <div className="text-muted-foreground mt-1 font-mono text-[9px] tracking-widest uppercase sm:text-[10px]">
                 {label}
               </div>
             </div>

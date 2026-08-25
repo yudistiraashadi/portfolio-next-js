@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { profile } from "@/data/profile";
 
 const contacts = [
   {
@@ -18,11 +19,7 @@ const contacts = [
     label: "@yudistiraashadi",
     icon: Github,
   },
-  {
-    href: "https://x.com/yudistiraashadi",
-    label: "@yudistiraashadi",
-    icon: Twitter,
-  },
+  { href: profile.cvPath, label: "View résumé / CV", icon: FileText },
 ] as const;
 
 export function Footer() {
@@ -35,18 +32,18 @@ export function Footer() {
           {/* Left: identity + availability */}
           <div>
             <p className="mb-1 text-base font-semibold">Yudistira Ashadi</p>
-            <p className="font-mono mb-3 text-xs tracking-widest text-foreground dark:text-primary uppercase">
-              CTO · Co-Founder · Software Engineer
+            <p className="text-foreground dark:text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+              {profile.extendedHeadline}
             </p>
-            <p className="max-w-xs text-sm text-muted-foreground">
-              Available for enterprise projects, consulting, and freelance
-              engagements across Indonesia and remotely.
+            <p className="text-muted-foreground max-w-xs text-sm">
+              Open to senior and lead engineering roles, technical leadership,
+              consulting, and ambitious product collaborations.
             </p>
           </div>
 
           {/* Right: contact links */}
           <div>
-            <p className="font-mono mb-4 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+            <p className="text-muted-foreground mb-4 font-mono text-xs font-semibold tracking-widest uppercase">
               Get in Touch
             </p>
             <ul className="flex flex-col gap-3">
@@ -60,7 +57,7 @@ export function Footer() {
                         ? undefined
                         : "noopener noreferrer"
                     }
-                    className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
                   >
                     <Icon className="h-4 w-4 shrink-0" />
                     <span>{label}</span>
@@ -73,7 +70,7 @@ export function Footer() {
 
         <Separator className="mb-6" />
 
-        <div className="flex flex-col items-center gap-1 text-center text-xs text-muted-foreground sm:flex-row sm:justify-center sm:gap-2">
+        <div className="text-muted-foreground flex flex-col items-center gap-1 text-center text-xs sm:flex-row sm:justify-center sm:gap-2">
           <span>© {currentYear} Yudistira Ashadi</span>
           <span className="hidden sm:inline">·</span>
           <span>
@@ -82,7 +79,7 @@ export function Footer() {
               href="https://nextjs.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-primary"
+              className="hover:text-primary underline underline-offset-2"
             >
               Next.js
             </Link>{" "}
@@ -91,7 +88,7 @@ export function Footer() {
               href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-primary"
+              className="hover:text-primary underline underline-offset-2"
             >
               Tailwind CSS
             </Link>

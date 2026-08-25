@@ -25,9 +25,16 @@ export async function generateMetadata({
   const portfolio = portfolioData.find((p) => p.slug === slug);
   if (!portfolio) return { title: "Not Found" };
   return {
-    title: `${portfolio.title} | Yudistira Ashadi`,
+    title: portfolio.title,
     description: portfolio.description,
     keywords: portfolio.tags,
+    alternates: { canonical: `/portfolio/${portfolio.slug}` },
+    openGraph: {
+      type: "article",
+      url: `/portfolio/${portfolio.slug}`,
+      title: portfolio.title,
+      description: portfolio.description,
+    },
   };
 }
 

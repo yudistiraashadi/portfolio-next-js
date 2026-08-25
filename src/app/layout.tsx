@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { profile } from "@/data/profile";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,12 +18,34 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yudis.dev"),
   title: {
     template: "%s — Yudistira Ashadi",
-    default: "Yudistira Ashadi — CTO & Software Engineer",
+    default: `${profile.name} — ${profile.headline}`,
   },
   description:
-    "Personal website of Yudistira Ashadi — CTO, co-founder, and full-stack software engineer based in Indonesia.",
+    "Senior Full-Stack & AI Engineer and Co-Founder & CTO building production AI, data, and SaaS systems for financial services, government, and enterprise teams.",
+  applicationName: "Yudistira Ashadi Portfolio",
+  keywords: [
+    "Senior Full-Stack Engineer",
+    "AI Engineer",
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "LLM Applications",
+    "Software Architect",
+    "CTO",
+    "Indonesia",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: `${profile.name} — ${profile.headline}`,
+    description:
+      "Production AI, data, and SaaS systems—from ambiguous workflows to measurable impact.",
+    siteName: "Yudistira Ashadi Portfolio",
+  },
 };
 
 export default function RootLayout({

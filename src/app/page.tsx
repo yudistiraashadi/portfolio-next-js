@@ -6,6 +6,7 @@ import { TechStack } from "@/components/tech-stack";
 import { WorkExperience } from "@/components/work-experience";
 import { PortfolioCard } from "@/components/portfolio-card";
 import { FadeIn } from "@/components/fade-in";
+import { Credentials } from "@/components/credentials";
 
 import { portfolioData } from "@/data/portfolio";
 
@@ -18,20 +19,28 @@ export default function Home() {
       <StatsBar />
 
       <FadeIn>
-        <TechStack />
+        <WorkExperience />
       </FadeIn>
 
       {/* Featured Projects */}
       <FadeIn>
-        <section className="border-b border-border py-16">
+        <section
+          id="projects"
+          className="border-border scroll-mt-20 border-b py-20"
+        >
           <div className="mx-auto max-w-7xl px-4">
-            <div className="mb-10 flex items-center justify-between">
-              <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
-                Featured Projects
-              </h2>
+            <div className="mb-10 flex items-end justify-between gap-6">
+              <div>
+                <p className="text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+                  Selected impact
+                </p>
+                <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">
+                  Featured Projects
+                </h2>
+              </div>
               <Link
                 href="/portfolio"
-                className="text-sm font-medium text-muted-foreground hover:text-primary"
+                className="text-muted-foreground hover:text-primary shrink-0 text-sm font-medium"
               >
                 View all →
               </Link>
@@ -47,7 +56,11 @@ export default function Home() {
       </FadeIn>
 
       <FadeIn>
-        <WorkExperience />
+        <TechStack />
+      </FadeIn>
+
+      <FadeIn>
+        <Credentials />
       </FadeIn>
     </>
   );

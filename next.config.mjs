@@ -1,20 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        optimizePackageImports: [
-            "@mantine/core",
-            "@mantine/dates",
-            "@mantine/hooks",
-            "@mantine/notifications",
-            "clsx",
-            "dayjs",
-            "framer-motion",
-            "mini-svg-data-uri",
-            "nextjs-toploader",
-            "sharp",
-            "tailwind-merge"
-        ],
-    },
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  experimental: {
+    optimizePackageImports: ["framer-motion", "lucide-react"],
+  },
 };
 
 export default nextConfig;

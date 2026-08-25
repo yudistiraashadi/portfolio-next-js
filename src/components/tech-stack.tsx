@@ -3,16 +3,25 @@ import { skillsData } from "@/data/skills";
 
 export function TechStack() {
   return (
-    <section className="border-b border-border py-16">
+    <section id="skills" className="border-border scroll-mt-20 border-b py-20">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="mb-10 text-2xl font-bold tracking-tight lg:text-3xl">
-          Skills &amp; Technologies
-        </h2>
+        <div className="mb-10 max-w-2xl">
+          <p className="text-primary mb-3 font-mono text-xs tracking-widest uppercase">
+            What I work with
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">
+            Skills &amp; Technologies
+          </h2>
+          <p className="text-muted-foreground mt-4 text-base leading-relaxed">
+            A product-minded stack spanning data acquisition, AI orchestration,
+            application engineering, infrastructure, and technical leadership.
+          </p>
+        </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {Object.entries(skillsData).map(([category, skills]) => (
             <div key={category}>
-              <p className="font-mono mb-3 text-[10px] tracking-widest text-muted-foreground uppercase">
+              <p className="text-muted-foreground mb-3 font-mono text-[10px] tracking-widest uppercase">
                 {category}
               </p>
               <div className="flex flex-wrap gap-2">

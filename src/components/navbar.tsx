@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu } from "lucide-react";
+import { useRef, useState } from "react";
+import { FileText, Menu } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -20,32 +20,35 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/utils/cn";
 
 import photoProfile from "@/assets/images/photo_profile.jpg";
+import { profile } from "@/data/profile";
 
 const navLinks = [
   { label: "Home", href: "/" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Projects", href: "/#projects" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact", href: "#contacts" },
+  { label: "Contact", href: "/#contacts" },
 ] as const;
 
 export function Navbar() {
   const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
-  const [prevY, setPrevY] = useState(0);
+  const prevY = useRef(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > prevY && latest > 80) {
+    if (latest > prevY.current && latest > 80) {
       setHidden(true);
     } else {
       setHidden(false);
     }
-    setPrevY(latest);
+    prevY.current = latest;
   });
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
-    if (href.startsWith("#")) return false;
+    if (href.includes("#")) return false;
     return pathname.startsWith(href);
   };
 
@@ -54,7 +57,7 @@ export function Navbar() {
       variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
@@ -62,7 +65,7 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-2.5 rounded-md p-1 transition-opacity hover:opacity-80"
         >
-          <div className="h-7 w-7 overflow-hidden rounded-full border border-border">
+          <div className="border-border h-7 w-7 overflow-hidden rounded-full border">
             <Image
               src={photoProfile}
               alt="Yudistira Ashadi"
@@ -72,26 +75,26 @@ export function Navbar() {
             />
           </div>
           <div>
-            <div className="text-sm font-semibold leading-none">
+            <div className="text-sm leading-none font-semibold">
               Yudistira Ashadi
             </div>
-            <div className="font-mono text-[9px] text-muted-foreground">
-              CTO &amp; Co-founder
+            <div className="text-muted-foreground font-mono text-[9px]">
+              Senior Full-Stack &amp; AI Engineer
             </div>
           </div>
         </Link>
 
         {/* Desktop nav — center */}
-        <nav className="hidden items-center gap-1 sm:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
                 buttonVariants({ variant: "ghost", size: "sm" }),
-                "rounded-full text-sm text-muted-foreground hover:text-foreground",
+                "text-muted-foreground hover:text-foreground rounded-full text-sm",
                 isActive(link.href) &&
-                  "border-b-2 border-primary text-foreground rounded-none pb-0",
+                  "border-primary text-foreground rounded-none border-b-2 pb-0",
               )}
             >
               {link.label}
@@ -102,15 +105,16 @@ export function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <Link
-            href="https://grahateknologimaju.com/"
+            href={profile.cvPath}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
-              "hidden text-sm text-muted-foreground hover:text-foreground sm:inline-flex",
+              "text-muted-foreground hover:text-foreground hidden text-sm lg:inline-flex",
             )}
           >
-            Our Agency ↗
+            <FileText className="mr-1 h-4 w-4" aria-hidden="true" />
+            CV
           </Link>
 
           <ThemeToggle />
@@ -122,7 +126,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8 sm:hidden"
+                  className="h-8 w-8 lg:hidden"
                   aria-label="Open menu"
                 />
               }
@@ -152,16 +156,17 @@ export function Navbar() {
                   </Link>
                 ))}
                 <Link
-                  href="https://grahateknologimaju.com/"
+                  href={profile.cvPath}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: "ghost" }),
-                    "justify-start text-muted-foreground",
+                    "text-muted-foreground justify-start",
                   )}
                   onClick={() => setMobileOpen(false)}
                 >
-                  Our Agency ↗
+                  <FileText className="mr-2 h-4 w-4" aria-hidden="true" />
+                  View CV ↗
                 </Link>
               </nav>
             </SheetContent>
