@@ -17,6 +17,7 @@ import freelancer from "@/assets/work/freelancer.webp";
 import mydaxue from "@/assets/work/mydaxue.webp";
 import retas from "@/assets/work/retas.png";
 import gtmLogo from "@/assets/work/gtm-logo.png";
+import quantamental from "@/assets/work/quantamental.png";
 
 export const monthNames = [
   "January",
@@ -41,6 +42,7 @@ export const workData: WorkType[] = [
     yearEnd: 2026,
     monthEnd: 7,
     companyName: "Quantamental AG",
+    companyLogo: quantamental.src,
     jobTitle: "Full-Stack AI Engineer",
     location: "Remote · Switzerland",
     employmentType: "Freelance",
@@ -77,7 +79,7 @@ export const workData: WorkType[] = [
     monthEnd: 9,
     companyName: "PT Solusi Siber Teknologi (Retas.io)",
     companyLogo: retas.src,
-    jobTitle: "Software Developer → Lead Developer",
+    jobTitle: "Lead Developer",
     location: "Surabaya, Indonesia",
     summary:
       "Progressed into technical leadership for concurrent government and enterprise products while maintaining 60%+ hands-on engineering time.",
