@@ -5,13 +5,13 @@ import { PortfolioList } from "@/components/portfolio-list";
 import { portfolioData } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Selected Projects",
   description:
     "Projects by Yudistira Ashadi — web apps, AI tools, and mobile applications.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
     url: "/portfolio",
-    title: "Portfolio — Yudistira Ashadi",
+    title: "Selected Projects — Yudistira Ashadi",
     description:
       "Selected production work across AI, enterprise platforms, government technology, SaaS, and mobile applications.",
   },
@@ -23,7 +23,7 @@ export default function PortfolioPage() {
       <AuroraBackground fadeBottom>
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h1 className="mb-3 text-4xl font-bold tracking-tight lg:text-5xl">
-            Portfolio
+            Selected Projects
           </h1>
           <p className="text-muted-foreground max-w-xl">
             A collection of projects across web platforms, AI integrations,

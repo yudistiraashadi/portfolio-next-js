@@ -42,7 +42,7 @@ export default function Home() {
                 href="/portfolio"
                 className="text-muted-foreground hover:text-primary-readable shrink-0 text-sm font-medium"
               >
-                View all →
+                View All Projects →
               </Link>
             </div>
 

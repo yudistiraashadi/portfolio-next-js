@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowDown,
-  FileText,
   Github,
   Linkedin,
   MapPin,
@@ -70,16 +69,7 @@ export function Hero() {
                 <ArrowDown className="ml-1 h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
-                href={profile.cvPath}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonVariants({ variant: "outline" })}
-              >
-                <FileText className="mr-1 h-4 w-4" aria-hidden="true" />
-                View CV
-              </Link>
-              <Link
-                href="/portfolio"
+                href="#projects"
                 className={buttonVariants({ variant: "ghost" })}
               >
                 Selected projects →

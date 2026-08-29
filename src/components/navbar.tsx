@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { FileText, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -20,13 +20,10 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/utils/cn";
 
 import photoProfile from "@/assets/images/photo_profile.jpg";
-import { profile } from "@/data/profile";
-
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Experience", href: "/#experience" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Projects", href: "/portfolio" },
   { label: "Contact", href: "/#contacts" },
 ] as const;
 
@@ -104,19 +101,6 @@ export function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <Link
-            href={profile.cvPath}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              "text-muted-foreground hover:text-foreground hidden text-sm lg:inline-flex",
-            )}
-          >
-            <FileText className="mr-1 h-4 w-4" aria-hidden="true" />
-            CV
-          </Link>
-
           <ThemeToggle />
 
           {/* Mobile burger */}
@@ -155,19 +139,6 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  href={profile.cvPath}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: "ghost" }),
-                    "text-muted-foreground justify-start",
-                  )}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <FileText className="mr-2 h-4 w-4" aria-hidden="true" />
-                  View CV ↗
-                </Link>
               </nav>
             </SheetContent>
           </Sheet>

@@ -63,7 +63,7 @@ export default async function PortfolioDetailPage({
             className="text-muted-foreground hover:text-primary-readable mb-8 inline-flex items-center gap-1 text-sm transition-colors"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
-            Back to Portfolio
+            Back to Projects
           </Link>
 
           {/* Thumbnail */}
