@@ -2,7 +2,6 @@ export const profile = {
   name: "Yudistira Ashadi",
   headline: "Senior Full-Stack & AI Engineer",
   extendedHeadline: "Senior Full-Stack & AI Engineer · Co-Founder & CTO",
-  location: "Surabaya, Indonesia · Open to remote and hybrid roles",
   introduction:
     "I turn complex research and business workflows into production AI, data, and SaaS products.",
   summary:

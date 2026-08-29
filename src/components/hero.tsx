@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowDown,
-  Github,
-  Linkedin,
-  MapPin,
-  Twitter,
-} from "lucide-react";
+import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button-variants";
 import { AuroraBackground } from "@/components/aurora-background";
@@ -53,14 +47,6 @@ export function Hero() {
             </p>
             <p className="text-muted-foreground mb-6 max-w-2xl text-base leading-relaxed lg:text-lg">
               {profile.summary}
-            </p>
-
-            <p className="text-muted-foreground mb-8 flex items-center gap-2 text-sm">
-              <MapPin
-                className="text-primary-readable h-4 w-4"
-                aria-hidden="true"
-              />
-              {profile.location}
             </p>
 
             <div className="mb-8 flex flex-wrap gap-3">

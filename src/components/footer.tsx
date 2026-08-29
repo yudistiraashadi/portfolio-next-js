@@ -29,15 +29,15 @@ export function Footer() {
     <footer className="bg-background">
       <div id="contacts" className="mx-auto max-w-7xl px-4 py-16">
         <div className="mb-10 grid gap-10 sm:grid-cols-2">
-          {/* Left: identity + availability */}
+          {/* Left: identity */}
           <div>
             <p className="mb-1 text-base font-semibold">Yudistira Ashadi</p>
             <p className="text-primary-readable mb-3 font-mono text-xs font-semibold tracking-widest uppercase">
               {profile.extendedHeadline}
             </p>
             <p className="text-muted-foreground max-w-xs text-sm">
-              Open to senior and lead engineering roles, technical leadership,
-              consulting, and ambitious product collaborations.
+              Building dependable AI, data, and SaaS products from architecture
+              through production.
             </p>
           </div>
 
